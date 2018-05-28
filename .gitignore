@@ -33,7 +33,9 @@ bower_components
 build/Release
 
 # Dependency directories
-node_modules/
+client-react/node_modules/
+server-rest-node-express/node_modules/
+server-rest-node-express/tmp/
 jspm_packages/
 
 # TypeScript v1 declaration files
