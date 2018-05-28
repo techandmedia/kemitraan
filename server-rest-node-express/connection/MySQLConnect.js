@@ -1,10 +1,3 @@
-
-/**
- * @author: Jayesh Agrawal
- * @date: 2th Dec 2017 
- * @desc: establish Mysql Connection.
-*/
-// establish Mysql Connection.
 var mysql = require('mysql');
 function MySQLConnect() {
   this.pool = null;

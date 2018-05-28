@@ -11,9 +11,28 @@ var express = require('express');
 var bodyparser = require('body-parser');
 var routes = require('./routes/route');
 var cors = require('cors');
+var graphqlHTTP = require('express-graphql');
 
 // creating server instance
 var app = express();
+
+var { buildSchema } = require('graphql');
+
+var schema = buildSchema(`
+  type Query {
+    hello: String
+  }
+`);
+
+var root = { hello: () => 'Hello world!' };
+
+app.use('/graphql', graphqlHTTP({
+  schema: schema,
+  rootValue: root,
+  graphiql: true,
+}));
+app.listen(4000, () => console.log('Now browse to localhost:4000/graphql'));
+
 
 app.use(express.static('public'));
 // app.use('/public', express.static(__dirname + '/public'));

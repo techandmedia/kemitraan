@@ -1,5 +1,5 @@
 {
-  "name": "sample-api",
+  "name": "kemitraan-api",
   "version": "1.0.0",
   "description": "MySQL API",
   "main": "server.js",
@@ -17,6 +17,8 @@
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
     "express": "^4.16.2",
+    "express-graphql": "^0.6.12",
+    "graphql": "^0.13.2",
     "mysql": "^2.15.0",
     "path": "^0.12.7"
   }

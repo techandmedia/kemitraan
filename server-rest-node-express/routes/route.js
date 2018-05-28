@@ -12,7 +12,7 @@ module.exports = {
 
         // adding route for users, here app is express instance which provide use
         // get method for handling get request from http server. 
-        app.get('/api/users', function (req, res) {
+        app.get('/api/user', function (req, res) {
             transactions.getAllUsers(res);
         });
 
