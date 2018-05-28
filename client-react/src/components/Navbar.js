@@ -6,7 +6,7 @@ export default class Navbar extends React.Component {
       <nav className="margin-all navbar is-transparent">
         <div className="navbar-brand">
           <a className="navbar-item" href="http://www.kemitraan.or.id/">
-            <img src="kemitraan.png" alt="Kemitraan"  />
+            <img src="images/kemitraan.png" alt="Kemitraan"  />
           </a>
           <div className="navbar-burger burger" data-target="navbarExampleTransparentExample">
             <span></span>
