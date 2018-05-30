@@ -46,7 +46,7 @@ function Transaction() {
   };
 
   // create: function (req, res, next) {
-  //   let response;
+  //   let respErr;
   //   const name = req.body.name;
   //   const serial = req.body.serial;
   //   const tag = req.body.tag;
@@ -63,22 +63,17 @@ function Transaction() {
   //         handleSuccessOrErrorMessage(err, result, res);
   //       });
 
+  //   } else {
+  //     respErr = {
+  //       'result': 'error',
+  //       'msg': 'Please fill required details'
+  //     };
+  //     // res.header("Access-Control-Allow-Origin", "*");
+  //     // res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  //     res.setHeader('Content-Type', 'application/json');
+  //     res.status(200).send(JSON.stringify(respErr));
   //   }
-
-  this.getTransactionById = function (id, res) {
-    connection.init();
-    connection.acquire(function (err, con) {
-      var query = 'SELECT date_format(t.TransactionDate,\'%d-%b-%Y\') as date, ' +
-        'CASE WHEN t.TransactionAmount >= 0 THEN t.TransactionAmount ' +
-        'ELSE 0 END AS Credit, CASE WHEN t.TransactionAmount < 0 THEN ' +
-        't.TransactionAmount ELSE 0 END AS Debit, t.Balance FROM ' +
-        'transactions t INNER JOIN users u ON t.UserId=u.UserID WHERE t.UserId = ?;';
-      con.query(query, id, function (err, result) {
-        con.release();
-        res.send(result);
-      });
-    });
-  };
+  // },
 
 }
 

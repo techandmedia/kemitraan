@@ -1,29 +1,11 @@
 const express = require('express');
-const app = express();
-
-var mysql = require('mysql');
-var connection = mysql.createConnection({
-    host     : 'localhost',
-	port	 : '3306',
-    user     : 'dv259_andri',
-    password : '12345',
-    database : 'dv259321_inventory'
-});
-
-connection.connect(function(err) {
-  if (err) {
-    app.get('/', (req, res) => res.send('Error banget T_T'))
-	console.log(err)
-  }
-  	app.get('/', (req, res) => res.send('Hello Andri Subarnanto'))
-});
-
-app.listen(3306, () => console.log('Example app listening on port 3306!'));
-
-const express = require('express');
 const router = express.Router();
+var bodyParser = require('body-parser');
+
 
 const app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 const port = process.env.PORT || 5000;
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
@@ -60,7 +42,8 @@ app.post('/employees', function (req, res) {
   // postData, function (error, results, fields) {
   //   if (error) throw error;
   //   res.end(JSON.stringify(results));
-  connection.query("INSERT INTO users SET ?", 
+  postData.created_at = new Date();
+  connection.query("INSERT INTO users SET ?",
   postData, function (error, results, fields) {
     if (error) throw error;
     console.log(results.insertId); // Auto increment id

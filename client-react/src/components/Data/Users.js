@@ -10,7 +10,7 @@ export default class Users extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:8000/api/Users').then(res => {
+    axios.get('http://localhost:5000/Users').then(res => {
       // axios.get('https://app.subarnanto.com/api/Users').then(res => {
       this.setState({ Users: res.data });
       console.log({ Users: res.data });
