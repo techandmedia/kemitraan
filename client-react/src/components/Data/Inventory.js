@@ -1,18 +1,18 @@
 import React from 'react';
 import axios from 'axios';
-import { Card } from 'antd';
-import './Inventory.css';
+// import { Card } from 'antd';
+// import './Inventory.css';
 
 // const { Meta } = Card;
 
-const gridStyle = {
-  width: '240px',
-  height: "280px",
-  textAlign: 'left',
-  margin: '10',
-  padding: '10',
-  background: 'white'
-};
+// const gridStyle = {
+//   width: '240px',
+//   height: "280px",
+//   textAlign: 'left',
+//   margin: '10',
+//   padding: '10',
+//   background: 'white'
+// };
 
 export default class Inventory extends React.Component {
   constructor(props) {
@@ -30,21 +30,46 @@ export default class Inventory extends React.Component {
     });
   }
 
+  // render() {
+  //   return this.state.inventory.map(itemList => {
+  //     let item = itemList;
+
+  //     return (
+  //       <Card.Grid style={gridStyle}>
+  //         <img alt="pict" height="150px" src={item.image} />
+  //         <h4> </h4>
+  //         <h4>Nama:  {item.name} </h4>
+  //         <h4>Nomor Seri:  {item.serial} </h4>
+  //         <h4>ID Tag:  {item.tag} </h4>
+  //       </Card.Grid>
+  //     );
+  //   })
+  // }
+
   render() {
     return this.state.inventory.map(itemList => {
       let item = itemList;
-
       return (
-        <Card.Grid style={gridStyle}>
-          <img alt="pict" height="150px"  src={item.image} />
-          <h4> </h4>
-          <h4>Nama:  {item.name} </h4>
-          <h4>Nomor Seri:  {item.serial} </h4>
-          <h4>ID Tag:  {item.tag} </h4>
-        </Card.Grid>
+        <div className="card margin-card">
+          <div className="card-content">
+            <div className="media">
+              <div>
+                <figure className="image is-96x96">
+                  <img src={item.image} alt='gambar'/>
+                </figure>
+              </div>
+            </div>
+            <div>
+              <h4>Nama:  {item.name} </h4>
+              <h4>Nomor Seri:  {item.serial} </h4>
+              <h4>ID Tag:  {item.tag} </h4>
+            </div>
+          </div>
+        </div>
       );
     })
   }
+
 }
 
   // render() {

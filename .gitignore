@@ -13,6 +13,7 @@ build/Release
 
 # Dependency directories
 client-react/node_modules/
+client-react/build/
 server-rest-node-express/node_modules/
 server-rest-node-express/tmp/
 

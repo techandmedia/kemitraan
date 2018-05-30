@@ -4,6 +4,7 @@
   "description": "MySQL API",
   "main": "server.js",
   "scripts": {
+    "start": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -13,6 +14,9 @@
   ],
   "author": "Jayesh Agraval",
   "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^1.17.5"
+  },
   "dependencies": {
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
