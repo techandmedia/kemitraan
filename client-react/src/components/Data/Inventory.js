@@ -18,22 +18,21 @@ export default class Inventory extends React.Component {
   }
 
   render() {
-    return this.state.inventory.map(itemList => {
-      let item = itemList;
+    return this.state.inventory.map(item => {
       return (
         <div className="card margin-card">
           <div className="card-content">
             <div className="media">
               <div>
                 <figure className="image is-96x96">
-                  <img src={item.image} alt='gambar'/>
+                  <img image={item.image} src={item.image} alt='gambar'/>
                 </figure>
               </div>
             </div>
             <div>
-              <h4>Nama:  {item.name} </h4>
-              <h4>Nomor Seri:  {item.serial} </h4>
-              <h4>ID Tag:  {item.tag} </h4>
+              <h4 name={item.name}>Nama:  {item.name} </h4>
+              <h4 serial={item.serial}>Nomor Seri:  {item.serial} </h4>
+              <h4 tag={item.tag}>ID Tag:  {item.tag} </h4>
             </div>
           </div>
         </div>
