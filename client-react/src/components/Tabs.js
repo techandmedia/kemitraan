@@ -2,25 +2,30 @@ import React, { Component } from 'react';
 import { Tabs } from 'antd';
 import Inventory from './Data/Inventory';
 import Userlist from './Data/Userlist';
-import Form from './Data/Form';
+import FormUser from './Data/FormUser';
+import FormInventory from './Data/FormItem';
+import ProductHistory from './Data/ProductHistory';
 
 const TabPane = Tabs.TabPane;
 
 export default class Tab extends Component {
   render() {
     return (
-      <Tabs type="card">
-        <TabPane className="tile" tab="Form" key="1">
-          <Form />
+      <Tabs defaultActiveKey="1" type="card">
+        <TabPane tab="Form User" key="1">
+          <FormUser />
         </TabPane>
-        <TabPane className="tile" tab="Inventory" key="2">
+        <TabPane tab="Form Item" key="2">
+          <FormInventory />
+        </TabPane>
+        <TabPane tab="Inventory" key="3">
           <Inventory />
         </TabPane>
-        <TabPane className="tile" tab="User List" key="3">
+        <TabPane tab="User List" key="4">
           <Userlist />
         </TabPane>
-        <TabPane className="tile" tab="History" key="4">
-          <Inventory />
+        <TabPane tab="History" key="5">
+          <ProductHistory />
         </TabPane>
       </Tabs>
     )

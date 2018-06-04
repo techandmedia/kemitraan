@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { List, Card } from 'antd';
 
 export default class Inventory extends React.Component {
   constructor(props) {
@@ -18,30 +19,45 @@ export default class Inventory extends React.Component {
   }
 
   render() {
-    return this.state.inventory.map(item => {
-      return (
-        <div className="card margin-card">
-          <div className="card-content">
-            <div className="media">
-              <div>
-                <figure className="image is-96x96">
-                  <img image={item.image} src={item.image} alt='gambar'/>
-                </figure>
-              </div>
-            </div>
-            <div>
-              <h4 name={item.name}>Nama:  {item.name} </h4>
-              <h4 serial={item.serial}>Nomor Seri:  {item.serial} </h4>
-              <h4 tag={item.tag}>ID Tag:  {item.tag} </h4>
-            </div>
-          </div>
-        </div>
-      );
-    })
+       return (
+        <List grid={{ gutter: 8, xs: 1, sm: 2, md: 4, lg: 4, xl: 4, xxl: 4 }}
+        // grid={{ gutter: 8, xxl: 3, md: 4, lg: 4 }}
+        dataSource={this.state.inventory}
+        renderItem={item => (
+          <List.Item >
+            <Card style={{ background: 'white', padding: 0, minHeight: 280 }}>
+              <ul>
+                <img key={item.imagekey} src={item.image} alt='gambar' width='auto' height='80' />
+                <li key={item.uid}>Project ID: {item.id}</li>
+                <li key={item.namekey}>Nama: {item.name}</li>
+                <li key={item.serialkey}>Nomor Seri: {item.serial}</li>
+                <li key={item.tagkey}>ID Tag: {item.tag}</li>
+              </ul>
+            </Card>
+          </List.Item>
+        )}
+      />
+    )
   }
-
 }
 
+ // <Row type="flex" justify="start"> <Col span={4} className="card margin-card">
+            // {/* <div className="card margin-card"> */}
+            //   <div className="card-content">
+            //     <div className="media">
+            //       <div>
+            //         <figure >
+            //           <img key={item.imagekey} src={item.image} alt='gambar' width='150' height='auto'/>
+            //         </figure>
+            //       </div>
+            //     </div>
+            //     <div>
+            //       <h4 key={item.namekey}>Nama:  {item.name} </h4>
+            //       <h4 key={item.serialkey}>Nomor Seri:  {item.serial} </h4>
+            //       <h4 key={item.tagkey}>ID Tag:  {item.tag} </h4>
+            //     </div>
+            //   {/* </div> */}
+            // </div></Col></Row>
   // render() {
   //   return this.state.inventory.map(item => {
   //     return (

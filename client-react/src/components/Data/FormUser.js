@@ -1,14 +1,16 @@
 import React from 'react';
 import axios from 'axios';
-import { Form, Input } from 'antd';
+import { Form, Input, Button } from 'antd';
 // import { List, Card, Form } from 'antd';
 
 const FormItem = Form.Item;
 const formItemLayout = {
+  // length label
   labelCol: {
-    md: { span: 16 },
-    lg: { span: 8 },
+    md: { span: 4 },
+    lg: { span: 2 },
   },
+  // length content
   wrapperCol: {
     md: { span: 16 },
     lg: { span: 8 },
@@ -75,7 +77,11 @@ export default class FormUser extends React.Component {
         <FormItem {...formItemLayout} label="Title">
           <Input type="text" name="this.state.title" onChange={this.handleTitleChange} />
         </FormItem>
-        <button type="submit">Add</button>
+        <FormItem wrapperCol={{ span: 12, offset: 2 }}>
+          <Button type="primary" htmlType="submit">
+            Add User
+          </Button>
+        </FormItem>
       </Form>
       // <Form onSubmit={this.handleSubmit}>
       //   <FormItem {...formItemLayout}>

@@ -21,6 +21,32 @@ var connection = mysql.createConnection({
   database: 'andri'
 });
 
+app.get('/product-history', function (req, res) {
+  console.log(req);
+  connection.query('SELECT * from product_history', function (error, results, fields) {
+    if (error) throw error;
+    res.end(JSON.stringify(results));
+  });
+});
+
+app.get('/product-history/:id', function (req, res) {
+  connection.query('SELECT * from product_history where id=?', [req.params.id], function (error, results, fields) {
+    if (error) throw error;
+    res.end(JSON.stringify(results));
+  });
+});
+
+app.post('/product-history', function (req, res) {
+  var postData = req.body;
+  // postData.created_at = new Date();
+  connection.query("INSERT INTO product_history SET ?", postData, function (error, results, fields) {
+    if (error) throw error;
+    console.log(results.insertId);
+    res.end(JSON.stringify(results));
+  });
+});
+
+
 app.get('/users', function (req, res) {
   console.log(req);
   connection.query('SELECT * from users', function (error, results, fields) {
