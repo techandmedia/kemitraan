@@ -98,7 +98,7 @@ export default class ProductHistory extends React.Component {
     axios.get('http://localhost:5000/product-history').then(res => {
       // axios.get('https://app.subarnanto.com/api/users').then(res => {
       this.setState({ users: res.data });
-      console.log({ users: res.data });
+      // console.log({ users: res.data });
     });
   }
 
@@ -112,7 +112,7 @@ export default class ProductHistory extends React.Component {
         dataIndex: 'fullname',
         key: 'fullname',
         filters: [
-          { text: this.state.fullname, value: this.state.fullname }
+          { text: 'Tes', value: 'tes' }
         ],
         filteredValue: filteredInfo.fullname || null,
         onFilter: (value, record) => record.fullname.includes(value),
@@ -124,7 +124,7 @@ export default class ProductHistory extends React.Component {
         dataIndex: 'win7pro',
         key: 'win7pro',
         filters: [
-          { text: this.state.win7pro, value: this.state.win7pro }
+          { text: 'Windows 7 Pro', value: '1' }
         ],
         filteredValue: filteredInfo.win7pro || null,
         onFilter: (value, record) => record.win7pro.includes(value),
@@ -140,7 +140,7 @@ export default class ProductHistory extends React.Component {
           <Button onClick={this.clearFilters}>Clear filters</Button>
           <Button onClick={this.clearAll}>Clear filters and sorters</Button>
         </div>
-        <Table rowKey="tagid" dataSource={this.state.users} columns={columns} />
+        <Table columns={columns} rowKey="tagid" dataSource={this.state.users}  onChange={this.handleChange}/>
       </div>
     )
   }

@@ -21,6 +21,14 @@ var connection = mysql.createConnection({
   database: 'andri'
 });
 
+app.get('/product-history-v2', function (req, res) {
+  console.log(req);
+  connection.query('SELECT * from product_history_v2', function (error, results, fields) {
+    if (error) throw error;
+    res.end(JSON.stringify(results));
+  });
+});
+
 app.get('/product-history', function (req, res) {
   console.log(req);
   connection.query('SELECT * from product_history', function (error, results, fields) {

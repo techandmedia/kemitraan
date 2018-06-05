@@ -4,7 +4,7 @@ import Inventory from './Data/Inventory';
 import Userlist from './Data/Userlist';
 import FormUser from './Data/FormUser';
 import FormInventory from './Data/FormItem';
-import ProductHistory from './Data/ProductHistory';
+import ProductHistory from './Data/ProductHistory-v2';
 import Win7 from './Filter/Windows7';
 import Win8 from './Filter/Win810Pro';
 import Win8SL from './Filter/Win810SL';
@@ -29,7 +29,7 @@ export default class Tab extends Component {
           <Userlist />
         </TabPane>
         <TabPane tab="History" key="5">
-          <Tabs defaultActiveKey="4">
+          <Tabs defaultActiveKey="1">
             <TabPane tab="Product History" key="1">
               <ProductHistory />
             </TabPane>
