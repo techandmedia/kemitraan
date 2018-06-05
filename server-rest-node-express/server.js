@@ -29,6 +29,41 @@ app.get('/product-history', function (req, res) {
   });
 });
 
+app.get('/product-history/win7pro', function (req, res) {
+  connection.query('SELECT * from product_history where win7pro IS TRUE', function (error, results, fields) {
+    if (error) throw error;
+    res.end(JSON.stringify(results));
+  });
+});
+
+app.get('/product-history/win8pro', function (req, res) {
+  connection.query('SELECT * from product_history where win810pro IS TRUE', function (error, results, fields) {
+    if (error) throw error;
+    res.end(JSON.stringify(results));
+  });
+});
+
+app.get('/product-history/win8sl', function (req, res) {
+  connection.query('SELECT * from product_history where win810sl IS TRUE', function (error, results, fields) {
+    if (error) throw error;
+    res.end(JSON.stringify(results));
+  });
+});
+
+app.get('/product-history/macbook', function (req, res) {
+  connection.query('SELECT * FROM `product_history` WHERE `computerid` LIKE "Macbook"', function (error, results, fields) {
+    if (error) throw error;
+    res.end(JSON.stringify(results));
+  });
+});
+
+app.get('/product-history/no-os', function (req, res) {
+  connection.query('SELECT * FROM `product_history` WHERE `off16` AND `win7pro` AND `win810pro` AND `win810sl` AND `off13` AND `off10` is true', function (error, results, fields) {
+    if (error) throw error;
+    res.end(JSON.stringify(results));
+  });
+});
+
 app.get('/product-history/:id', function (req, res) {
   connection.query('SELECT * from product_history where id=?', [req.params.id], function (error, results, fields) {
     if (error) throw error;

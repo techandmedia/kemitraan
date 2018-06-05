@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import { Table } from 'antd';
+import './product.css';
+import { Button } from 'antd/lib/radio';
 
 const columns = [{
   title: 'Name',
@@ -60,8 +62,36 @@ export default class ProductHistory extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      users: []
-    }
+      users: [],
+      filteredInfo: null,
+      sortedInfo: null
+      
+    };
+  }
+
+  handleChange = (pagination, filters, sorter) => {
+    console.log('Various parameters', pagination, filters, sorter)
+    this.setState({
+      filteredInfo: filters,
+      sortedInfo: sorter
+    });
+  }
+  clearFilters = () => {
+    this.setState({ filteredInfo: null });
+  }
+  clearAll = () => {
+    this.setState({
+      filteredInfo: null,
+      sortedInfo: null
+    });
+  }
+  setGroupSort = () => {
+    this.setState({
+      sortedInfo: {
+        order: 'descend',
+        columnKey: 'usergroup'
+      },
+    })
   }
 
   componentDidMount() {
@@ -73,23 +103,46 @@ export default class ProductHistory extends React.Component {
   }
 
   render() {
+    let { sortedInfo, filteredInfo } = this.state;
+    sortedInfo = sortedInfo || {};
+    filteredInfo = filteredInfo || {};
+    const columns = [
+      {
+        title: 'Name',
+        dataIndex: 'fullname',
+        key: 'fullname',
+        filters: [
+          { text: this.state.fullname, value: this.state.fullname }
+        ],
+        filteredValue: filteredInfo.fullname || null,
+        onFilter: (value, record) => record.fullname.includes(value),
+        sorter: (a, b) => a.fullname.length - b.fullname.length,
+        sortOrder: sortedInfo.columnKey === 'fullname' && sortedInfo.order
+      },
+      {
+        title: 'Windows 7 Pro',
+        dataIndex: 'win7pro',
+        key: 'win7pro',
+        filters: [
+          { text: this.state.win7pro, value: this.state.win7pro }
+        ],
+        filteredValue: filteredInfo.win7pro || null,
+        onFilter: (value, record) => record.win7pro.includes(value),
+        sorter: (a, b) => a.win7pro.length - b.win7pro.length,
+        sortOrder: sortedInfo.columnKey === 'win7pro' && sortedInfo.order
+      }
+    ];
+
     return (
-      // const dataSource={this.state.users};
-      <Table dataSource={this.state.users} columns={columns} />
+      <div>
+        <div className="table-operations">
+          <Button onClick={this.setGroupSort}>Sort Group</Button>
+          <Button onClick={this.clearFilters}>Clear filters</Button>
+          <Button onClick={this.clearAll}>Clear filters and sorters</Button>
+        </div>
+        <Table rowKey="tagid" dataSource={this.state.users} columns={columns} />
+      </div>
     )
   }
 }
-
-// const dataSource = [{
-//   key: '1',
-//   name: 'Mike',
-//   age: 32,
-//   address: '10 Downing Street'
-// }, {
-//   key: '2',
-//   name: 'John',
-//   age: 42,
-//   address: '10 Downing Street'
-// }];
-
 
