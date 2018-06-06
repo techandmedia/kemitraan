@@ -54,6 +54,11 @@ export default class ProductHistory extends React.Component {
     filteredInfo = filteredInfo || {};
     const columns = [
       {
+        title: 'No',
+        dataIndex: 'id',
+        key: 'id',
+      },
+      {
         title: 'Name',
         dataIndex: 'fullname',
         key: 'fullname',
@@ -110,7 +115,8 @@ export default class ProductHistory extends React.Component {
           { text: 'Windows 7 Pro', value: 'Windows 7 Pro' },
           { text: 'Windows 8/10 Pro', value: 'Windows 8/10 Pro' },
           { text: 'Windows 8/10 SL', value: 'Windows 8/10 SL' },
-          { text: 'Mac OS', value: 'Mac OS' }
+          { text: 'Mac OS', value: 'Mac OS' },
+          { text: 'Not Available', value: 'Not Available' }
         ],
         filteredValue: filteredInfo.os || null,
         onFilter: (value, record) => record.os.includes(value)
@@ -161,7 +167,7 @@ export default class ProductHistory extends React.Component {
           <Button onClick={this.clearFilters}>Reset Filters</Button>
           {/* <Button onClick={this.clearAll}>Clear filters and sorters</Button> */}
         </div>
-        <Table columns={columns} rowKey="tagid" dataSource={this.state.users} onChange={this.handleChange} />
+        <Table columns={columns} rowKey={this.state.id} dataSource={this.state.users} onChange={this.handleChange} />
       </div>
     )
   }

@@ -6,9 +6,9 @@ import FormUser from './Data/FormUser';
 import FormInventory from './Data/FormItem';
 import ProductHistory from './Data/ProductHistory-v2';
 import Win7 from './Filter/Windows7';
-import Win8 from './Filter/Win810Pro';
-import Win8SL from './Filter/Win810SL';
-import Macbook from './Filter/Macbook';
+// import Win8 from './Filter/Win810Pro';
+// import Win8SL from './Filter/Win810SL';
+// import Macbook from './Filter/Macbook';
 
 const TabPane = Tabs.TabPane;
 
@@ -36,7 +36,7 @@ export default class Tab extends Component {
             <TabPane tab="Windows 7" key="2">
               <Win7 />
             </TabPane>
-            <TabPane tab="Windows 8 / 10 Pro" key="3">
+            {/* <TabPane tab="Windows 8 / 10 Pro" key="3">
               <Win8 />
             </TabPane>
             <TabPane tab="Windows 8 / 10 SL" key="4">
@@ -44,7 +44,7 @@ export default class Tab extends Component {
             </TabPane>
             <TabPane tab="Macbook" key="5">
               <Macbook />
-            </TabPane>
+            </TabPane> */}
           </Tabs>
         </TabPane>
       </Tabs>

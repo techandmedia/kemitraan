@@ -11,29 +11,17 @@ const columns = [{
   dataIndex: 'usergroup',
   key: 'usergroup',
 }, {
-  title: 'Computer ID',
-  dataIndex: 'computerid',
-  key: 'computerid',
-}, {
   title: 'Domain',
   dataIndex: 'domain',
   key: 'domain',
 }, {
-  title: 'Windows 7 Pro',
-  dataIndex: 'win7pro',
-  key: 'win7pro',
+  title: 'Domain Name',
+  dataIndex: 'domname',
+  key: 'domname',
 }, {
-  title: 'Office 2010',
-  dataIndex: 'off10',
-  key: 'off10',
-}, {
-  title: 'Office 2013',
-  dataIndex: 'off13',
-  key: 'off13',
-}, {
-  title: 'Office 2013',
-  dataIndex: 'off16',
-  key: 'off16',
+  title: 'Microsoft Office',
+  dataIndex: 'off',
+  key: 'off',
 }, {
   title: 'Antivirus',
   dataIndex: 'av',
@@ -42,10 +30,6 @@ const columns = [{
   title: 'VPN',
   dataIndex: 'vpn',
   key: 'vpn',
-}, {
-  title: 'Mobile Device',
-  dataIndex: 'mobile_device',
-  key: 'mobile_device',
 }]
 
 export default class Win7 extends React.Component {
@@ -57,7 +41,8 @@ export default class Win7 extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:5000/product-history/win7pro').then(res => {
+    axios.get('http://localhost:5000/product-history-v2').then(res => {
+    // axios.get('http://localhost:5000/product-history/win7pro').then(res => {
       // axios.get('https://app.subarnanto.com/api/users').then(res => {
       this.setState({ users: res.data });
       console.log({ users: res.data });
@@ -67,7 +52,7 @@ export default class Win7 extends React.Component {
   render() {
     return (
       // const dataSource={this.state.users};
-      <Table rowKey="tagid" dataSource={this.state.users} columns={columns} />
+      <Table rowKey={this.state.id} dataSource={this.state.users} columns={columns} />
     )
   }
 }

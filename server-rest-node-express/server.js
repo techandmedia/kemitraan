@@ -29,66 +29,31 @@ app.get('/product-history-v2', function (req, res) {
   });
 });
 
-app.get('/product-history', function (req, res) {
-  console.log(req);
-  connection.query('SELECT * from product_history', function (error, results, fields) {
+app.get('/product-history-v2/:id', function (req, res) {
+  connection.query('SELECT * from product_history_v2 where id=?', [req.params.id], function (error, results, fields) {
     if (error) throw error;
     res.end(JSON.stringify(results));
   });
 });
 
-app.get('/product-history/win7pro', function (req, res) {
-  connection.query('SELECT * from product_history where win7pro IS TRUE', function (error, results, fields) {
-    if (error) throw error;
-    res.end(JSON.stringify(results));
-  });
-});
-
-app.get('/product-history/win8pro', function (req, res) {
-  connection.query('SELECT * from product_history where win810pro IS TRUE', function (error, results, fields) {
-    if (error) throw error;
-    res.end(JSON.stringify(results));
-  });
-});
-
-app.get('/product-history/win8sl', function (req, res) {
-  connection.query('SELECT * from product_history where win810sl IS TRUE', function (error, results, fields) {
-    if (error) throw error;
-    res.end(JSON.stringify(results));
-  });
-});
-
-app.get('/product-history/macbook', function (req, res) {
-  connection.query('SELECT * FROM `product_history` WHERE `computerid` LIKE "Macbook"', function (error, results, fields) {
-    if (error) throw error;
-    res.end(JSON.stringify(results));
-  });
-});
-
-app.get('/product-history/no-os', function (req, res) {
-  connection.query('SELECT * FROM `product_history` WHERE `off16` AND `win7pro` AND `win810pro` AND `win810sl` AND `off13` AND `off10` is true', function (error, results, fields) {
-    if (error) throw error;
-    res.end(JSON.stringify(results));
-  });
-});
-
-app.get('/product-history/:id', function (req, res) {
-  connection.query('SELECT * from product_history where id=?', [req.params.id], function (error, results, fields) {
-    if (error) throw error;
-    res.end(JSON.stringify(results));
-  });
-});
-
-app.post('/product-history', function (req, res) {
+app.put('/product-history-v2/:id', function (req, res) {
   var postData = req.body;
-  // postData.created_at = new Date();
-  connection.query("INSERT INTO product_history SET ?", postData, function (error, results, fields) {
+  // postData.created_at = new Date();UPDATE `product_history_v2` SET `computertype`='testing' WHERE `id`=47
+  connection.query('UPDATE users SET ? WHERE id = ', [req.params.id], postData, function (error, results, fields) {
     if (error) throw error;
     console.log(results.insertId);
     res.end(JSON.stringify(results));
   });
 });
 
+app.post('/product-history-v2', function (req, res) {
+  var postData = req.body;
+  connection.query("INSERT INTO product_history_v2 SET ?", postData, function (error, results, fields) {
+    if (error) throw error;
+    console.log(results.insertId);
+    res.end(JSON.stringify(results));
+  });
+});
 
 app.get('/users', function (req, res) {
   console.log(req);
@@ -139,3 +104,56 @@ app.post('/inventory', function (req, res) {
     res.end(JSON.stringify(results));
   });
 });
+
+// app.get('/product-history', function (req, res) {
+//   console.log(req);
+//   connection.query('SELECT * from product_history', function (error, results, fields) {
+//     if (error) throw error;
+//     res.end(JSON.stringify(results));
+//   });
+// });
+
+// app.get('/product-history/win7pro', function (req, res) {
+//   connection.query('SELECT * from product_history where win7pro IS TRUE', function (error, results, fields) {
+//     if (error) throw error;
+//     res.end(JSON.stringify(results));
+//   });
+// });
+
+// app.get('/product-history/win8pro', function (req, res) {
+//   connection.query('SELECT * from product_history where win810pro IS TRUE', function (error, results, fields) {
+//     if (error) throw error;
+//     res.end(JSON.stringify(results));
+//   });
+// });
+
+// app.get('/product-history/win8sl', function (req, res) {
+//   connection.query('SELECT * from product_history where win810sl IS TRUE', function (error, results, fields) {
+//     if (error) throw error;
+//     res.end(JSON.stringify(results));
+//   });
+// });
+
+// app.get('/product-history/macbook', function (req, res) {
+//   connection.query('SELECT * FROM `product_history` WHERE `computerid` LIKE "Macbook"', function (error, results, fields) {
+//     if (error) throw error;
+//     res.end(JSON.stringify(results));
+//   });
+// });
+
+// app.get('/product-history/:id', function (req, res) {
+//   connection.query('SELECT * from product_history where id=?', [req.params.id], function (error, results, fields) {
+//     if (error) throw error;
+//     res.end(JSON.stringify(results));
+//   });
+// });
+
+// app.post('/product-history', function (req, res) {
+//   var postData = req.body;
+//   // postData.created_at = new Date();
+//   connection.query("INSERT INTO product_history SET ?", postData, function (error, results, fields) {
+//     if (error) throw error;
+//     console.log(results.insertId);
+//     res.end(JSON.stringify(results));
+//   });
+// });
