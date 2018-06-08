@@ -46,7 +46,8 @@ export default class FormInventory extends React.Component {
     // const equipment_conditionForm = {equipment_condition: this.state.equipment_condition};
     // const titleForm = {title: this.state.title};
 
-    axios.post('http://localhost:5000/inventory',
+    // axios.post('http://localhost:5000/inventory',
+    axios.post('https://app.subarnanto.com/inventory',
       { name: this.state.name, serial: this.state.serial, tag: this.state.tag, price: this.state.price, equipment_condition: this.state.equipment_condition }, )
       .then(res => {
         // console.log(res);

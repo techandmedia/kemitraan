@@ -12,19 +12,20 @@ export default class UserList extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:5000/users').then(res => {
-      // axios.get('https://app.subarnanto.com/api/users').then(res => {
-      this.setState({ users: res.data });
-      console.log({ users: res.data });
-    });
-  }
+    // axios.get('http://localhost:5000/users').then(res => {
+      axios.get('https://app.subarnanto.com/users').then(res => {
+        this.setState({ users: res.data });
+        console.log({ users: res.data });
+      });
+    }
 
   render() {
-    return (
-      <List grid={{ gutter: 8, xs: 1, sm: 2, md: 3, lg: 3, xl: 3, xxl: 3 }}
+        return(
+      <List grid = {{ gutter: 8, xs: 1, sm: 2, md: 3, lg: 3, xl: 3, xxl: 3 }}
         // grid={{ gutter: 8, xxl: 3, md: 4, lg: 4 }}
-        dataSource={this.state.users}
-        renderItem={user => (
+        dataSource = { this.state.users }
+        renderItem = {
+        user => (
           <List.Item >
             <Card key={user.nameid} title={user.fullname} style={{ background: '#009688', padding: 0, minHeight: 280 }} >
               <ul >
@@ -38,7 +39,8 @@ export default class UserList extends React.Component {
               </ul>
             </Card>
           </List.Item>
-        )}
+        )
+      }
       />
     )
   }

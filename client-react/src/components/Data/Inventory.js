@@ -11,16 +11,16 @@ export default class Inventory extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:5000/inventory').then(res => {
-      // axios.get('https://app.subarnanto.com/api/inventory').then(res => {
+    // axios.get('http://localhost:5000/inventory').then(res => {
+    axios.get('https://app.subarnanto.com/inventory').then(res => {
       this.setState({ inventory: res.data });
       console.log({ inventory: res.data });
     });
   }
 
   render() {
-       return (
-        <List grid={{ gutter: 8, xs: 1, sm: 2, md: 4, lg: 4, xl: 4, xxl: 4 }}
+    return (
+      <List grid={{ gutter: 8, xs: 1, sm: 2, md: 4, lg: 4, xl: 4, xxl: 4 }}
         // grid={{ gutter: 8, xxl: 3, md: 4, lg: 4 }}
         dataSource={this.state.inventory}
         renderItem={item => (

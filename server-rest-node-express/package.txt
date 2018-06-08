@@ -1,0 +1,25 @@
+{
+  "name": "kemitraan-api",
+  "version": "1.0.0",
+  "description": "MySQL API",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "MySQL",
+    "ExpressJs",
+    "NodeJs"
+  ],
+  "author": "Eko Andri Subarnanto",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^1.17.5"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "mysql": "^2.15.0",
+    "path": "^0.12.7"
+  }
+}

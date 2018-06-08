@@ -41,8 +41,8 @@ export default class ProductHistory extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:5000/product-history-v2').then(res => {
-      // axios.get('https://app.subarnanto.com/api/users').then(res => {
+    // axios.get('http://localhost:5000/product-history-v2').then(res => {
+    axios.get('https://app.subarnanto.com/product-history-v2').then(res => {
       this.setState({ users: res.data });
       // console.log({ users: res.data });
     });
