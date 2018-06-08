@@ -4,7 +4,7 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 var cors = require('cors');
 
-app.use(express.static('public'));
+// app.use(express.static('public'));
 app.use(cors());
 
 app.use(bodyParser.json());
