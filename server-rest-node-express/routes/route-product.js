@@ -9,8 +9,6 @@ exports.getProductHistory = router.get("/api/product_history", (req, res) => {
   });
 });
 
-
-
 exports.getProductHistory = router.get("/api/product_history/ordered", (req, res) => {
   mySQL.query("SELECT * FROM `product_history` ORDER BY `fullname`", (err, results) => {
     if (err) console.log(err);
@@ -24,7 +22,6 @@ exports.getProductHistory = router.get("/api/product/orderedbydate", (req, res) 
     res.send(JSON.stringify(results));
   });
 });
-
 
 exports.getAllProduct = router.get("/api/product", (req, res) => {
   mySQL.query("SELECT * from product", (err, results) => {
