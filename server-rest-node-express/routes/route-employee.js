@@ -2,16 +2,16 @@ const express = require("express");
 const router = express.Router();
 const mySQL = require("../config/config-MySQL");
 
-exports.getAllContacts = router.get("/api/contacts", (req, res) => {
-  mySQL.query("SELECT * from contacts", (err, results) => {
+exports.getAllemployee = router.get("/api/employee", (req, res) => {
+  mySQL.query("SELECT * from employee", (err, results) => {
     if (err) console.log(err);
     res.send(JSON.stringify(results));
   });
 });
 
-exports.getSortedContact = router.get("/api/contacts/ordered", (req, res) => {
+exports.getSortedEmployee = router.get("/api/employee/ordered", (req, res) => {
   mySQL.query(
-    "SELECT * FROM `contacts` ORDER BY `fullname`",
+    "SELECT * FROM `employee` ORDER BY `fullname`",
     (err, results) => {
       if (err) console.log(err);
       res.send(JSON.stringify(results));
@@ -19,9 +19,9 @@ exports.getSortedContact = router.get("/api/contacts/ordered", (req, res) => {
   );
 });
 
-exports.getContactByID = router.get("/api/contacts/:id", (req, res) => {
+exports.getEmployeeByID = router.get("/api/employee/:id", (req, res) => {
   mySQL.query(
-    "SELECT * from contacts where id=?",
+    "SELECT * from employee where id=?",
     [req.params.id],
     (err, results, fields) => {
       if (err) console.log(err);
@@ -30,10 +30,10 @@ exports.getContactByID = router.get("/api/contacts/:id", (req, res) => {
   );
 });
 
-exports.postContact = router.post("/api/contacts/new", (req, res) => {
+exports.postEmployee = router.post("/api/employee/new", (req, res) => {
   var postData = req.body;
   mySQL.query(
-    "INSERT INTO contacts SET ?",
+    "INSERT INTO employee SET ?",
     postData,
     (err, results, fields) => {
       if (err) console.log(err);
