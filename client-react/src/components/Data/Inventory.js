@@ -12,7 +12,8 @@ export default class Inventory extends React.Component {
 
   componentDidMount() {
     // axios.get('http://localhost:5000/inventory').then(res => {
-    axios.get('https://app.subarnanto.com/inventory').then(res => {
+    axios.get('https://app.subarnanto.com/api/product/orderedbydate').then(res => {
+      // axios.get('https://app.subarnanto.com/api/product/ordered').then(res => {
       this.setState({ inventory: res.data });
       console.log({ inventory: res.data });
     });
@@ -28,10 +29,13 @@ export default class Inventory extends React.Component {
             <Card style={{ background: 'white', padding: 0, minHeight: 280 }}>
               <ul>
                 <img key={item.imagekey} src={item.image} alt='gambar' width='auto' height='80' />
-                <li key={item.uid}>Project ID: {item.id}</li>
-                <li key={item.namekey}>Nama: {item.name}</li>
-                <li key={item.serialkey}>Nomor Seri: {item.serial}</li>
-                <li key={item.tagkey}>ID Tag: {item.tag}</li>
+                <li key={item.uid}>Product Name: {item.productname}</li>
+                <li key={item.catkey}>Category: {item.category}</li>
+                <li key={item.modkey}>Model: {item.model}</li>
+                <li key={item.serialkey}>Serial: {item.serialnumber}</li>
+                <li key={item.pricekey}>Price: {(new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(item.price))}</li>
+                <li key={item.condkey}>Condition: {item.equipment_condition}</li>
+                <li key={item.detaillkey}>Detail: {item.detail}</li>
               </ul>
             </Card>
           </List.Item>

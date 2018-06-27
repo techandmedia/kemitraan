@@ -60,54 +60,25 @@ export default class FormInventory extends React.Component {
       <Form onSubmit={this.handleSubmit}>
         <FormItem {...formItemLayout} label="Item Name">
           <Input type="text" name={this.state.name} onChange={this.handleNameChange} />
-          {/* <Input type="text" name="this.state.name" onChange={this.handleNameChange} /> */}
         </FormItem>
         <FormItem {...formItemLayout} label="Serial Number">
           <Input type="text" name={this.state.serial} onChange={this.handleSerialChange} /> 
-          {/* <Input type="text" name="this.state.serial" onChange={this.handleSerialChange} /> */}
         </FormItem>
         <FormItem {...formItemLayout} label="Inventory Tag">
           <Input type="text" name={this.state.tag} onChange={this.handleTagchange} />
-          {/* <Input type="text" name="this.state.tag" onChange={this.handleTagchange} /> */}
         </FormItem>
         <FormItem {...formItemLayout} label="Item Price">
           <Input type="text" name={this.state.price} onChange={this.handlePriceChange} />
-          {/* <Input type="text" name="this.state.price" onChange={this.handlePriceChange} /> */}
         </FormItem>
         <FormItem {...formItemLayout} label="Item Condition">
           <Input type="text" name={this.state.equipment_condition} onChange={this.handleEquipmentChange} />
-          {/* <Input type="text" name="this.state.equipment_condition" onChange={this.handleEquipmentChange} /> */}
         </FormItem>
-        {/* <FormItem {...formItemLayout} label="Image">
-          <Input type="text" name="this.state.title" onChange={this.handleTitleChange} />
-        </FormItem> */}
         <FormItem wrapperCol={{ span: 12, offset: 2 }}>
           <Button type="primary" htmlType="submit">
             Add Item
           </Button>
         </FormItem>
       </Form>
-      // <Form onSubmit={this.handleSubmit}>
-      //   <FormItem {...formItemLayout}>
-      //     <label>User Project ID:  <input type="text" name="this.state.name" onChange={this.handleNameChange} /></label>
-      //   </FormItem>
-      //   <FormItem {...formItemLayout}>
-      //     <label>Full Name:  <input type="text" name="this.state.serial" onChange={this.handleSerialChange} /></label><br />
-      //   </FormItem>
-      //   <FormItem {...formItemLayout}>
-      //     <label>User Group:  <input type="text" name="this.state.tag" onChange={this.handleTagchange} /></label><br />
-      //   </FormItem>
-      //   <FormItem {...formItemLayout}>
-      //     <label>Email:  <input type="text" name="this.state.price" onChange={this.handlePriceChange} /></label>
-      //   </FormItem>
-      //   <FormItem {...formItemLayout}>
-      //     <label>equipment_condition:  <input type="text" name="this.state.equipment_condition" onChange={this.handleEquipmentChange} /></label>
-      //   </FormItem>
-      //   <FormItem {...formItemLayout}>
-      //     <label>Title:  <input type="text" name="this.state.title" onChange={this.handleTitleChange} /></label>
-      //   </FormItem>
-      //   <button type="submit">Add</button>
-      // </Form>
     )
   }
 }

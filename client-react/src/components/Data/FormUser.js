@@ -22,35 +22,35 @@ export default class FormUser extends React.Component {
   //   super(props)
   //   this.state = {
   state = {
-    userid: '',
+    proj_id: '',
     fullname: '',
     usergroup: '',
-    emailid: '',
+    email: '',
     mobile: '',
     title: '',
 
   };
 
-  handleUserIDChange = event => {this.setState({ userid: event.target.value })}
+  handleProjIDChange = event => {this.setState({ proj_id: event.target.value })}
   handleFullNameChange = event => {this.setState({ fullname: event.target.value })}
   handleUserGroupChange = event => {this.setState({ usergroup: event.target.value })}
-  handleEmailIDChange = event => {this.setState({ emailid: event.target.value })}
+  handleEmailChange = event => {this.setState({ email: event.target.value })}
   handleMobileChange = event => {this.setState({ mobile: event.target.value })}
   handleTitleChange = event => {this.setState({ title: event.target.value })}
 
   handleSubmit = event => {
     event.preventDefault();
 
-    // const userform = {userid: this.state.userid};
+    // const userform = {proj_id: this.state.proj_id};
     // const fullnameForm = {fullname: this.state.fullname};
     // const usergroupForm = {usergroup: this.state.usergroup};
-    // const emailidForm = {emailid: this.state.emailid};
+    // const emailForm = {email: this.state.email};
     // const mobileForm = {mobile: this.state.mobile};
     // const titleForm = {title: this.state.title};
 
-    // axios.post('http://localhost:5000/users',
-    axios.post('https://app.subarnanto.com/users', 
-      { userid: this.state.userid, fullname: this.state.fullname, usergroup: this.state.usergroup, emailid: this.state.emailid, mobile: this.state.mobile, title: this.state.title },)
+    axios.post('/api/employee/new',
+    // axios.post('https://app.subarnanto.com/users', 
+      { proj_id: this.state.proj_id, fullname: this.state.fullname, usergroup: this.state.usergroup, email: this.state.email, mobile: this.state.mobile, title: this.state.title },)
       .then(res => {
         console.log(res);
         console.log(res.data);
@@ -61,7 +61,7 @@ export default class FormUser extends React.Component {
     return (
       <Form onSubmit={this.handleSubmit}>
         <FormItem {...formItemLayout} label="User Project ID">
-          <Input type="text" name="this.state.userid" onChange={this.handleUserIDChange} />
+          <Input type="text" name="this.state.proj_id" onChange={this.handleProjIDChange} />
         </FormItem>
         <FormItem {...formItemLayout} label="Full Name">
           <Input type="text" name="this.state.fullname" onChange={this.handleFullNameChange} />
@@ -70,7 +70,7 @@ export default class FormUser extends React.Component {
           <Input type="text" name="this.state.usergroup" onChange={this.handleUserGroupChange} />
         </FormItem>
         <FormItem {...formItemLayout} label="Email">
-          <Input type="text" name="this.state.emailid" onChange={this.handleEmailIDChange} />
+          <Input type="text" name="this.state.email" onChange={this.handleEmailChange} />
         </FormItem>
         <FormItem {...formItemLayout} label="Mobile">
           <Input type="text" name="this.state.mobile" onChange={this.handleMobileChange} />
@@ -86,7 +86,7 @@ export default class FormUser extends React.Component {
       </Form>
       // <Form onSubmit={this.handleSubmit}>
       //   <FormItem {...formItemLayout}>
-      //     <label>User Project ID:  <input type="text" name="this.state.userid" onChange={this.handleUserIDChange} /></label>
+      //     <label>User Project proj_id:  <input type="text" name="this.state.proj_id" onChange={this.handleProjIDChange} /></label>
       //   </FormItem>
       //   <FormItem {...formItemLayout}>
       //     <label>Full Name:  <input type="text" name="this.state.fullname" onChange={this.handleFullNameChange} /></label><br />
@@ -95,7 +95,7 @@ export default class FormUser extends React.Component {
       //     <label>User Group:  <input type="text" name="this.state.usergroup" onChange={this.handleUserGroupChange} /></label><br />
       //   </FormItem>
       //   <FormItem {...formItemLayout}>
-      //     <label>Email:  <input type="text" name="this.state.emailid" onChange={this.handleEmailIDChange} /></label>
+      //     <label>Email:  <input type="text" name="this.state.email" onChange={this.handleEmailChange} /></label>
       //   </FormItem>
       //   <FormItem {...formItemLayout}>
       //     <label>Mobile:  <input type="text" name="this.state.mobile" onChange={this.handleMobileChange} /></label>

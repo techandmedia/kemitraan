@@ -12,8 +12,8 @@ export default class UserList extends React.Component {
   }
 
   componentDidMount() {
-    // axios.get('http://localhost:5000/users').then(res => {
-      axios.get('https://app.subarnanto.com/users').then(res => {
+    axios.get('/api/employee').then(res => {
+      // axios.get('https://app.subarnanto.com/users').then(res => {
         this.setState({ users: res.data });
         console.log({ users: res.data });
       });
@@ -29,7 +29,7 @@ export default class UserList extends React.Component {
           <List.Item >
             <Card key={user.nameid} title={user.fullname} style={{ background: '#009688', padding: 0, minHeight: 280 }} >
               <ul >
-                <li key={user.uid}>Project ID: {user.id}</li>
+                {/* <li key={user.uid}>Project ID: {user.id}</li> */}
                 <li key={user.projid}>Project ID: {user.userid}</li>
                 <li key={user.groupid}>User Group: {user.usergroup}</li>
                 <li key={user.mailid}>Email: {user.emailid}</li>
