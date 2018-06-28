@@ -6,27 +6,48 @@ const FormProduct = Form.Item;
 // const Option = Select.Option;
 
 const computerType = [{
-  value: 'computer',
+  value: 'Computer',
   label: 'Computer',
   children: [{
-    value: 'desktop',
+    value: 'Desktop',
     label: 'Desktop',
     children: [
       {
-        value: 'aio',
+        value: 'All in One PC',
         label: 'All in One PC'
       },
       {
-        value: 'pc',
+        value: 'PC Desktop',
         label: 'PC Desktop'
       }]
   }, {
-    value: 'laptop',
+    value: 'Laptop',
     label: 'Laptop'
   }]
 }, {
-  value: 'jaringan',
+  value: 'Alat Jaringan',
   label: 'Alat Jaringan',
+}]
+
+const os = [{
+  value: 'Microsoft Windows',
+  label: 'Microsoft Windows',
+  children: [{
+    value: 'Windows 7 Pro',
+    label: 'Windows 7 Pro'
+  }, {
+    value: 'Windows 8/10 Pro',
+    label: 'Windows 8/10 Pro'
+  }, {
+    value: 'Windows 8/10 SL',
+    label: 'Windows 8/10 SL'
+  }],
+}, {
+  value: 'Unix/Linux',
+  label: 'Unix/Linux'
+}, {
+  value: 'Mac OS',
+  label: 'Mac OS'
 }]
 
 export default class FormInventory extends React.Component {
@@ -36,6 +57,7 @@ export default class FormInventory extends React.Component {
   state = {
     category: '',
     productname: '',
+    os: '',
     model: '',
     serialnumber: '',
     price: '',
@@ -44,7 +66,21 @@ export default class FormInventory extends React.Component {
     image: '',
   };
 
-  handleCategoryChange = value => { this.setState({ category: value }) }
+  // function handleCategoryChange(value) {
+  //   return this.setState({ category: value })
+  // }
+
+  handleCategoryChange = value => {
+    let val = value.length - 1 // ambil index yang terakhir, karena index dimulai dari 0, maka kurangi 1
+    this.setState({ category: value[val] }) // tampilkan index yang terakhir
+    console.log(value[val])
+    // return label[label.length - 1]
+  }
+  handleOsChange = value => {
+    let val = value.length - 1
+    this.setState({ os: value[val] })
+    console.log(value[val])
+  }
   handleProductNameChange = event => { this.setState({ productname: event.target.value }) }
   handleModelchange = event => { this.setState({ model: event.target.value }) }
   handleSerialnumberChange = event => { this.setState({ serialnumber: event.target.value }) }
@@ -64,14 +100,16 @@ export default class FormInventory extends React.Component {
   //   detail: '',
   //   image: '',
   // }) }
-  
+
   handleSubmit = event => {
     event.preventDefault();
 
-    axios.post('https://app.subarnanto.com/api/product/new',
+    // axios.post('https://app.subarnanto.com/api/product/new',
+    axios.post('http://localhost:5000/api/product/new',
       {
         category: this.state.category,
         productname: this.state.productname,
+        os: this.state.os,
         serialnumber: this.state.serialnumber,
         model: this.state.model,
         price: this.state.price,
@@ -87,10 +125,6 @@ export default class FormInventory extends React.Component {
             content: 'Data successfully add',
           });
           setTimeout(() => modal.destroy(), 2000);
-          
-          // this.state = this.handleReset;
-          // handleReset = () => { this.props.form.resetFields(); }
-          // Function([this.handleReset: string[]]);
         }
         // console.log(res);
         // console.log(res.data);
@@ -104,7 +138,8 @@ export default class FormInventory extends React.Component {
           <Cascader options={computerType} category={this.state.category} onChange={this.handleCategoryChange} />
         </FormProduct>
         <FormProduct style={formStyle} {...formProductLayout} label="Operating System">
-          <Cascader />
+          {/* <Cascader options={os} /> */}
+          <Cascader options={os} os={this.state.os} onChange={this.handleOsChange} />
         </FormProduct>
         <FormProduct style={formStyle}  {...formProductLayout} label="Product Name">
           <Input type="text" productname={this.state.productname} onChange={this.handleProductNameChange} />

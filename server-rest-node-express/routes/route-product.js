@@ -54,11 +54,11 @@ exports.getProductByID = router.get("/api/product/:id", (req, res) => {
 exports.postProduct = router.post("/api/product/new", (req, res) => {
   var postData = req.body;
   mySQL.query(
-    "INSERT INTO product SET ?",
+    "INSERT INTO `product` SET ?",
     postData,
     (err, results, fields) => {
       if (err) console.log(err);
-      console.log(results.insertId);
+      // console.log(results.insertId);
       res.end(JSON.stringify(results));
     }
   );

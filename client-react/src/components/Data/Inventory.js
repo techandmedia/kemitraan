@@ -11,8 +11,8 @@ export default class Inventory extends React.Component {
   }
 
   componentDidMount() {
-    // axios.get('http://localhost:5000/inventory').then(res => {
-    axios.get('https://app.subarnanto.com/api/product/orderedbydate').then(res => {
+    axios.get('http://localhost:5000/api/product/orderedbydate').then(res => {
+    // axios.get('https://app.subarnanto.com/api/product/orderedbydate').then(res => {
       // axios.get('https://app.subarnanto.com/api/product/ordered').then(res => {
       this.setState({ inventory: res.data });
       console.log({ inventory: res.data });
@@ -32,6 +32,7 @@ export default class Inventory extends React.Component {
                 <li key={item.uid}>Product Name: {item.productname}</li>
                 <li key={item.catkey}>Category: {item.category}</li>
                 <li key={item.modkey}>Model: {item.model}</li>
+                <li key={item.oskey}>Operating System: {item.os}</li>
                 <li key={item.serialkey}>Serial: {item.serialnumber}</li>
                 <li key={item.pricekey}>Price: {(new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(item.price))}</li>
                 <li key={item.condkey}>Condition: {item.equipment_condition}</li>

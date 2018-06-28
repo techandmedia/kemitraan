@@ -37,7 +37,7 @@ exports.postContact = router.post("/api/contacts/new", (req, res) => {
     postData,
     (err, results, fields) => {
       if (err) console.log(err);
-      console.log(results.insertId);
+      // console.log(results.insertId);
       res.end(JSON.stringify(results));
     }
   );
