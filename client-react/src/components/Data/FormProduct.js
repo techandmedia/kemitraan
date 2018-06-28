@@ -74,7 +74,6 @@ export default class FormInventory extends React.Component {
     let val = value.length - 1 // ambil index yang terakhir, karena index dimulai dari 0, maka kurangi 1
     this.setState({ category: value[val] }) // tampilkan index yang terakhir
     console.log(value[val])
-    // return label[label.length - 1]
   }
   handleOsChange = value => {
     let val = value.length - 1
