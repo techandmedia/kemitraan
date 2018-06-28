@@ -54,16 +54,16 @@ export default class FormInventory extends React.Component {
   handleImageChange = event => { this.setState({ image: event.target.value }) }
 
   // resetFields = this.state.resetFields();
-  handleReset = event => { this.setState({
-    category: '',
-    productname: '',
-    model: '',
-    serialnumber: '',
-    price: '',
-    equipment_condition: '',
-    detail: '',
-    image: '',
-  }) }
+  // handleReset = event => { this.setState({
+  //   category: '',
+  //   productname: '',
+  //   model: '',
+  //   serialnumber: '',
+  //   price: '',
+  //   equipment_condition: '',
+  //   detail: '',
+  //   image: '',
+  // }) }
   
   handleSubmit = event => {
     event.preventDefault();
@@ -131,8 +131,9 @@ export default class FormInventory extends React.Component {
           <Button type="primary" htmlType="submit">
             Add Item
           </Button>
-          <Button style={{ marginLeft: 20 }} type="primary" onClick={this.handleReset}>
-            Clear
+          {/* <Button style={{ marginLeft: 20 }} type="primary" onClick={this.handleReset}> */}
+          <Button style={{ marginLeft: 20 }} type="primary">
+            Clear (not yet working!)
           </Button>
         </FormProduct>
 

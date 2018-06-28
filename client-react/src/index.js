@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+// import registerServiceWorker from './registerServiceWorker';
 import 'antd/dist/antd.css';
 
 ReactDOM.render(
   <div className="container">
     <App />
   </div>, document.getElementById('root'));
-registerServiceWorker();
+// registerServiceWorker();
