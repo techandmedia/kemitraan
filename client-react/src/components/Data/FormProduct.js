@@ -72,13 +72,13 @@ export default class FormInventory extends React.Component {
 
   handleCategoryChange = value => {
     let val = value.length - 1 // ambil index yang terakhir, karena index dimulai dari 0, maka kurangi 1
-    this.setState({ category: value[val] }) // tampilkan index yang terakhir
-    console.log(value[val])
+    this.setState({ category: value[val] }) // isi berdasarkan index yang terakhir
+    console.log('category ' + value[val])
   }
   handleOsChange = value => {
     let val = value.length - 1
     this.setState({ os: value[val] })
-    console.log(value[val])
+    console.log('os ' + value[val])
   }
   handleProductNameChange = event => { this.setState({ productname: event.target.value }) }
   handleModelchange = event => { this.setState({ model: event.target.value }) }
@@ -103,8 +103,8 @@ export default class FormInventory extends React.Component {
   handleSubmit = event => {
     event.preventDefault();
 
-    // axios.post('https://app.subarnanto.com/api/product/new',
-    axios.post('http://localhost:5000/api/product/new',
+    axios.post('https://app.subarnanto.com/api/product/new',
+    // axios.post('http://localhost:5000/api/product/new',
       {
         category: this.state.category,
         productname: this.state.productname,

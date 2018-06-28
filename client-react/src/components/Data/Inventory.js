@@ -11,8 +11,8 @@ export default class Inventory extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:5000/api/product/orderedbydate').then(res => {
-    // axios.get('https://app.subarnanto.com/api/product/orderedbydate').then(res => {
+    // axios.get('http://localhost:5000/api/product/orderedbydate').then(res => {
+    axios.get('https://app.subarnanto.com/api/product/orderedbydate').then(res => {
       // axios.get('https://app.subarnanto.com/api/product/ordered').then(res => {
       this.setState({ inventory: res.data });
       console.log({ inventory: res.data });
