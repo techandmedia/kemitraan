@@ -10,7 +10,7 @@ const Button = props => {
 export default Button
 
 const buttonStyle = {
-  width: 100, // lebar button dibuat standar
+  width: 150, // lebar button dibuat standar
   height: 'auto', // tinggi button auto mengikuti jumlah huruf
   borderRadius: 5,
   borderStyle: 'solid',
