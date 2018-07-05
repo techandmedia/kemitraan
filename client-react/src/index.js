@@ -1,11 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import TopNav from './Homepage';
+import styled from 'styled-components';
+import './style/GlobalStyle';
 import registerServiceWorker from './registerServiceWorker';
 import 'antd/dist/antd.css';
 
+const Wrapper = styled.section`
+  // display: flex;
+  padding: 10px;`
+
 ReactDOM.render(
-  <div className="container">
-    <App />
-  </div>, document.getElementById('root'));
+  <Wrapper>
+    <TopNav />
+  </Wrapper>, document.getElementById('root'));
 registerServiceWorker();
