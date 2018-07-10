@@ -13,10 +13,11 @@ const RouteConfigExample = () => (
       <div>
         <ul>
           <li>
-            <Link to="/web-development">Web Development</Link>
+            {/* bikin link nya ngga bisa root/a/c, atau root/c, harus berurutan root/a/b/c */}
+            <Link to="/projects/web-development">Web Development</Link>
           </li>
           <li>
-            <Link to="/web-design">Web Design</Link>
+            <Link to="/projects/web-design">Web Design</Link>
           </li>
         </ul>
         {routes.map((route, i) => <RouteWithSubRoutes key={i} {...route} />)}
@@ -25,47 +26,44 @@ const RouteConfigExample = () => (
   </Wrapper>
 );
 
-
 const webDesign = () => (
-  <childWrapper>
+  <ChildWrapper>
     <h2>Web Design</h2>
-  </childWrapper>);
+  </ChildWrapper>);
 
 const webDev = ({ routes }) => (
-  <childWrapper>
+  <ChildWrapper>
     <h2>Web Development</h2>
     <ul>
       <li>
-        <Link to="/web-development/kemitraan">Inventory Management System for Kemitraan</Link>
+        <Link to="/projects/web-development/kemitraan">Inventory Management System for Kemitraan</Link>
       </li>
       <li>
-        <Link to="/web-development/cart">Cart</Link>
+        <Link to="/projects/web-development/cart">Cart</Link>
       </li>
     </ul>
 
     {routes.map((route, i) => <RouteWithSubRoutes key={i} {...route} />)}
-  </childWrapper>
+  </ChildWrapper>
 );
 
 const Cart = () => <h3>Cart</h3>;
 
-////////////////////////////////////////////////////////////
-// then our route config
 const routes = [
   {
-    path: "/web-design",
+    path: "/projects/web-design",
     component: webDesign
   },
   {
-    path: "/web-development",
+    path: "/projects/web-development",
     component: webDev,
     routes: [
       {
-        path: "/web-development/kemitraan",
+        path: "/projects/web-development/kemitraan",
         component: Kemitraan
       },
       {
-        path: "/web-development/cart",
+        path: "/projects/web-development/cart",
         component: Cart
       }
     ]
@@ -90,7 +88,7 @@ const Wrapper = styled.section`
   display: flex;
   justify-content: flex-start;
 `
-const childWrapper = styled.section`
+const ChildWrapper = styled.section`
   align-self: start;
 
 `

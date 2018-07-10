@@ -1,8 +1,10 @@
 import React from 'react';
 import axios from 'axios';
+// import { Table, Input, InputNumber, Popconfirm, Form } from 'antd';
 import { Table } from 'antd';
 // import './product.css';
 import { Button } from 'antd/lib/radio';
+
 
 export default class ProductHistory extends React.Component {
   constructor(props) {
@@ -41,8 +43,8 @@ export default class ProductHistory extends React.Component {
   }
 
   componentDidMount() {
-    // axios.get('http://localhost:5000/product-history-v2').then(res => {
-    axios.get('https://app.subarnanto.com/api/product_history').then(res => {
+    axios.get('/api/product_history').then(res => {
+    // axios.get('https://app.subarnanto.com/api/product_history').then(res => {
       this.setState({ users: res.data });
       // console.log({ users: res.data });
     });
@@ -62,15 +64,6 @@ export default class ProductHistory extends React.Component {
         title: 'Name',
         dataIndex: 'fullname',
         key: 'fullname',
-        // filters: [
-        //   { text: 'Desktop', value: 'Desktop' },
-        //   { text: 'Laptop', value: 'Laptop' },
-        //   { text: 'Not Available', value: 'Not Available' }
-        // ],
-        // filteredValue: filteredInfo.computertype || null,
-        // onFilter: (value, record) => record.computertype.includes(value),
-        // sorter: (a, b) => a.fullname.length - b.fullname.length,
-        // sortOrder: sortedInfo.columnKey === 'fullname' && sortedInfo.order
       },
       {
         title: 'User Group',

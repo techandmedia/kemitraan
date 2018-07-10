@@ -5,6 +5,7 @@ import FormProduct from './FormProduct';
 import EmployeeList from './EmployeeList';
 import Inventory from './Inventory';
 import ProductHistory from './ProductHistory-v2';
+import EditableTable from './List-Product';
 // import Button from './components/button'
 // import Win7 from './Filter/Windows7';
 // import Win8 from './Filter/Win810Pro';
@@ -26,10 +27,13 @@ export default class Tab extends Component {
         <TabPane tab="Inventory" key="3">
           <Inventory />
         </TabPane>
-        <TabPane tab="Employee List" key="4">
+        <TabPane tab="Product List" key="4">
+          <EditableTable />
+        </TabPane>
+        <TabPane tab="Employee List" key="5">
           <EmployeeList />
         </TabPane>
-        <TabPane tab="History" key="5">
+        <TabPane tab="History" key="6">
           <Tabs defaultActiveKey="1">
             <TabPane tab="Product History" key="1">
               <ProductHistory />

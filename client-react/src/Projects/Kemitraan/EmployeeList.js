@@ -2,7 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import { List, Card } from 'antd';
 // import Button from '../components/button';
-import { CSVLink, CSVDownload } from 'react-csv';
+// import { CSVLink, CSVDownload } from 'react-csv';
+import { CSVLink } from 'react-csv';
 // import './card.css';
 
 export default class EmployeeList extends React.Component {
@@ -14,8 +15,8 @@ export default class EmployeeList extends React.Component {
   }
 
   componentDidMount() {
-    // axios.get('http://localhost:5000/employee').then(res => {
-    axios.get('https://app.subarnanto.com/api/employee/ordered').then(res => {
+    axios.get('/api/employee').then(res => {
+    // axios.get('https://app.subarnanto.com/api/employee/ordered').then(res => {
       this.setState({ employee: res.data });
       let dataEmployee = this.state.employee;
       console.log({ dataEmployee });

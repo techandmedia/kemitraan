@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TopNav from './Homepage';
 import styled from 'styled-components';
 import './style/GlobalStyle';
 import registerServiceWorker from './registerServiceWorker';
 import 'antd/dist/antd.css';
+
+import Homepage from './Homepage';
 
 const Wrapper = styled.section`
   // display: flex;
@@ -12,6 +13,6 @@ const Wrapper = styled.section`
 
 ReactDOM.render(
   <Wrapper>
-    <TopNav />
+    <Homepage />
   </Wrapper>, document.getElementById('root'));
 registerServiceWorker();

@@ -1,11 +1,11 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import styled from 'styled-components';
 import Home from './Navigation/Home';
 import About from './Navigation/About';
 import Projects from './Projects/Projects';
 
-const TopNav = () => (
+const Homepage = () => (
   <Router>
     <div>
       <Ul>
@@ -17,10 +17,14 @@ const TopNav = () => (
 
       <hr />
 
-      <Route exact path="/" component={Home} />
-      <Route path="/about" component={About} />
-      <Route path="/topics" component={Topics} />
-      <Route path="/projects" component={Projects} />
+      {/* Add switch so it can have both dynamic and static route,
+      check out Tyler McGinnis article */}
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/about" component={About} />
+        <Route path="/topics" component={Topics} />
+        <Route path="/projects" component={Projects} />
+      </Switch>
     </div>
   </Router>
 );
@@ -40,12 +44,14 @@ const Topics = ({ match }) => (
       </li>
     </ul>
 
-    <Route path={`${match.url}/:topicId`} component={Topic} />
-    <Route
-      exact
-      path={match.url}
-      render={() => <h3>Please select a topic.</h3>}
-    />
+    <Switch>
+      <Route path={`${match.url}/:topicId`} component={Topic} />
+      <Route
+        exact
+        path={match.url}
+        render={() => <h3>Please select a topic.</h3>}
+      />
+    </Switch>
   </div>
 );
 
@@ -55,7 +61,7 @@ const Topic = ({ match }) => (
   </div>
 );
 
-export default TopNav;
+export default Homepage;
 
 
 const Ul = styled.ul`

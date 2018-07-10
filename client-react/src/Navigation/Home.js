@@ -1,7 +1,7 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Route, Link } from "react-router-dom";
 import Projects from '../Projects/Projects';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 
 const Home = () => {
   return (
@@ -15,12 +15,12 @@ const Home = () => {
 
 export default Home;
 
-const Wrapper = styled.section`
-  display: flex;
-  justify-content: space-around
-  list-style-type: none;
-`
+// const Wrapper = styled.section`
+//   display: flex;
+//   justify-content: space-around
+//   list-style-type: none;
+// `
 
-const Li = styled.li`
-  font-size: 14px;
-`
+// const Li = styled.li`
+//   font-size: 14px;
+// `

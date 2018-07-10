@@ -14,9 +14,7 @@ build/Release
 # Dependency directories
 client-react/node_modules/
 client-react/build/
-client-react-parcel/node_modules/
-client-react-parcel/dist/
-client-react-parcel/.cache/
+client-react-parcel/
 server-rest-node-express/node_modules/
 server-rest-node-express/tmp/
 

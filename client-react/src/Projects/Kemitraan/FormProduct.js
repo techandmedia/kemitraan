@@ -103,8 +103,8 @@ export default class FormInventory extends React.Component {
   handleSubmit = event => {
     event.preventDefault();
 
-    axios.post('https://app.subarnanto.com/api/product/new',
-    // axios.post('http://localhost:5000/api/product/new',
+    // axios.post('https://app.subarnanto.com/api/product/new',
+    axios.post('/api/product/new',
       {
         category: this.state.category,
         productname: this.state.productname,

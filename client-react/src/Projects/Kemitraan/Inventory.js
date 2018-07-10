@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
-import { List, Card } from 'antd';
+import { List, Card, } from 'antd';
+// import { Table, Input, InputNumber, Popconfirm, Form, List, Card, } from 'antd';
+
 
 export default class Inventory extends React.Component {
   constructor(props) {
@@ -11,8 +13,8 @@ export default class Inventory extends React.Component {
   }
 
   componentDidMount() {
-    // axios.get('http://localhost:5000/api/product/orderedbydate').then(res => {
-    axios.get('https://app.subarnanto.com/api/product/orderedbydate').then(res => {
+    axios.get('/api/product/orderedbydate').then(res => {
+    // axios.get('https://app.subarnanto.com/api/product/orderedbydate').then(res => {
       // axios.get('https://app.subarnanto.com/api/product/ordered').then(res => {
       this.setState({ inventory: res.data });
       console.log({ inventory: res.data });
