@@ -188,14 +188,14 @@ const formProductLayout = {
     // xs: { span: 4, offset: 0 },
     sm: { span: 8 },
     md: { span: 6 },
-    lg: { span: 4 },
-    xl: { span: 3 },
+    lg: { span: 6 },
+    xl: { span: 6 },
   },
   // length content
   wrapperCol: {
     xs: { span: 8 },
-    sm: { span: 14 },
-    md: { span: 10 },
+    sm: { span: 8 },
+    md: { span: 8 },
     lg: { span: 8 },
     xl: { span: 6 },
   },
@@ -206,7 +206,7 @@ const buttonLayout = {
     // xs: { span: 1 },
     sm: { offset: 8 },
     md: { offset: 6 },
-    lg: { offset: 4 },
-    xl: { offset: 3 }
+    lg: { offset: 6 },
+    xl: { offset: 6 }
   }
 }

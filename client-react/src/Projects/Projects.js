@@ -7,7 +7,7 @@ import Kemitraan from './Kemitraan/Main';
 // A route config is just data. React is great at mapping
 // data into components, and <Route> is a component.
 
-const RouteConfigExample = () => (
+const ProjectRoute = () => (
   <Wrapper>
     <Router>
       <div>
@@ -16,6 +16,9 @@ const RouteConfigExample = () => (
             {/* bikin link nya ngga bisa root/a/c, atau root/c, harus berurutan root/a/b/c */}
             <Link to="/projects/web-development">Web Development</Link>
           </li>
+          {/* <li>
+            <Link to="/projects/kemitraan">Inventory Management System for Kemitraan</Link>
+          </li> */}
           <li>
             <Link to="/projects/web-design">Web Design</Link>
           </li>
@@ -54,6 +57,10 @@ const routes = [
     path: "/projects/web-design",
     component: webDesign
   },
+  // {
+  //   path: "/projects/kemitraan",
+  //   component: Kemitraan
+  // },
   {
     path: "/projects/web-development",
     component: webDev,
@@ -82,7 +89,7 @@ const RouteWithSubRoutes = route => (
   />
 );
 
-export default RouteConfigExample;
+export default ProjectRoute;
 
 const Wrapper = styled.section`
   display: flex;

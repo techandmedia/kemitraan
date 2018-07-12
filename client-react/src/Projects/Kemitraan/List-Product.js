@@ -142,8 +142,8 @@ class EditableTable extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    // axios.post('https://app.subarnanto.com/api/product/new',
-    axios.post('/api/product/new',
+    axios.post('https://app.subarnanto.com/api/product/new',
+    // axios.post('/api/product/new',
       {
         category: this.state.category,
         productname: this.state.productname,
@@ -171,7 +171,7 @@ class EditableTable extends React.Component {
 
   componentDidMount() {
     axios.get('/api/product/orderedbydate').then(res => {
-    // axios.get('https://app.subarnanto.com/api/product/orderedbydate').then(res => {
+    // axios.get('https://app.subarnanto.com/api/product/orderedbyname').then(res => {
       // axios.get('https://app.subarnanto.com/api/product/ordered').then(res => {
       this.setState({ products: res.data });
       // console.log({ products: res.data });

@@ -17,7 +17,7 @@ const TabPane = Tabs.TabPane;
 export default class Tab extends Component {
   render() {
     return (
-      <Tabs defaultActiveKey="4" type="card">
+      <Tabs defaultActiveKey="1" type="card">
         <TabPane tab="Form User" key="1">
           <FormUser />
         </TabPane>

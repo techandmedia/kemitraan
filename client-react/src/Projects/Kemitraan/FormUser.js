@@ -7,13 +7,19 @@ const FormItem = Form.Item;
 const formItemLayout = {
   // length label
   labelCol: {
-    md: { span: 4 },
-    lg: { span: 2 },
+    // xs: { span: 4, offset: 0 },
+    sm: { span: 8 },
+    md: { span: 6 },
+    lg: { span: 6 },
+    xl: { span: 6 },
   },
   // length content
   wrapperCol: {
-    md: { span: 16 },
+    xs: { span: 8 },
+    sm: { span: 8 },
+    md: { span: 8 },
     lg: { span: 8 },
+    xl: { span: 6 },
   },
 };
 
@@ -78,12 +84,24 @@ export default class FormUser extends React.Component {
         <FormItem {...formItemLayout} label="Title">
           <Input type="text" name="this.state.title" onChange={this.handleTitleChange} />
         </FormItem>
-        <FormItem wrapperCol={{ span: 12, offset: 2 }}>
+        <FormItem style={formStyle} {...buttonLayout}>
           <Button type="primary" htmlType="submit">
             Add User
           </Button>
+          <Button style={{ marginLeft: 20 }} type="primary">
+                Clear (not yet working!)
+              </Button>
         </FormItem>
       </Form>
+            //   <FormProduct style={formStyle} {...buttonLayout}>
+            //   <Button type="primary" htmlType="submit">
+            //     Add Item
+            //   </Button>
+            //   {/* <Button style={{ marginLeft: 20 }} type="primary" onClick={this.handleReset}> */}
+            //   <Button style={{ marginLeft: 20 }} type="primary">
+            //     Clear (not yet working!)
+            //   </Button>
+            // </FormProduct>
       // <Form onSubmit={this.handleSubmit}>
       //   <FormItem {...formItemLayout}>
       //     <label>User Project proj_id:  <input type="text" name="this.state.proj_id" onChange={this.handleProjIDChange} /></label>
@@ -107,4 +125,20 @@ export default class FormUser extends React.Component {
       // </Form>
     )
   }
+}
+
+const buttonLayout = {
+  wrapperCol: {
+    // xs: { span: 1 },
+    sm: { offset: 8 },
+    md: { offset: 6 },
+    lg: { offset: 6 },
+    xl: { offset: 6 }
+  }
+}
+
+const formStyle = {
+  margin: 5,
+  padding: 0,
+  color: 'rgb(250,128,114)'
 }
