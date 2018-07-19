@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { List, Card } from 'antd';
 // import Button from '../components/button';
-// import { CSVLink, CSVDownload } from 'react-csv';
+// import { CSVLink, CSVDownload } from 'react-csv'; ini untuk export table ke csv
 import { CSVLink } from 'react-csv';
 // import './card.css';
 

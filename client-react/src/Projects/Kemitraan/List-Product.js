@@ -60,6 +60,9 @@ class EditableTable extends React.Component {
   constructor(props) {
     super(props);
     this.state = { products: [], editingKey: '' };
+    console.log('props', props)
+    console.log('stateprops', this.state.props)
+    console.log('stateproducst', this.state.products)
     this.columns = [
       {
         title: 'Product Name',
@@ -142,8 +145,8 @@ class EditableTable extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    axios.post('https://app.subarnanto.com/api/product/new',
-    // axios.post('/api/product/new',
+    // axios.post('https://app.subarnanto.com/api/product/new',
+    axios.put('/api/product/update/:id',
       {
         category: this.state.category,
         productname: this.state.productname,
@@ -155,23 +158,24 @@ class EditableTable extends React.Component {
         detail: this.state.detail,
         image: this.state.image
       })
-      // .then(
-      //   // const success => {
-      //   function success() {
-      //     const modal = Modal.success({
-      //       title: 'Success',
-      //       content: 'Data successfully add',
-      //     });
-      //     setTimeout(() => modal.destroy(), 2000);
-      //   }
-      //   // console.log(res);
-      //   // console.log(res.data);
-      // )
+    // .then(
+    //   // const success => {
+    //   function success() {
+    //     const modal = Modal.success({
+    //       title: 'Success',
+    //       content: 'Data successfully add',
+    //     });
+    //     setTimeout(() => modal.destroy(), 2000);
+    //   }
+    //   // console.log(res);
+    //   // console.log(res.data);
+    // )
   }
 
   componentDidMount() {
-    axios.get('/api/product/orderedbydate').then(res => {
-    // axios.get('https://app.subarnanto.com/api/product/orderedbyname').then(res => {
+    // axios.get('/api/product/orderedbydate').then(res => {
+    axios.get('/api/product').then(res => {
+      // axios.get('https://app.subarnanto.com/api/product/orderedbyname').then(res => {
       // axios.get('https://app.subarnanto.com/api/product/ordered').then(res => {
       this.setState({ products: res.data });
       // console.log({ products: res.data });
@@ -179,6 +183,9 @@ class EditableTable extends React.Component {
   }
 
   isEditing = (record) => {
+    // console.log('record', record);
+    // console.log('recordID', record.id);
+    // console.log('stateEditKey', this.state.editingKey);
     // return record.key === this.state.editingKey;
     return record.id === this.state.editingKey;
   };
@@ -191,16 +198,18 @@ class EditableTable extends React.Component {
 
   // save(form, key) {
   save(form, id) {
+    console.log('form', form);
+    console.log('id', id)
     form.validateFields((error, row) => {
       if (error) {
         return;
       }
       const newData = [...this.state.products]; //array of object
-      // console.log('newdata 1', newData);
+      console.log('newdata 1', newData);
       // const index = newData.findIndex(item => key === item.key);
       const index = newData.findIndex(item => id === item.id); // get item ID
-      // console.log('index 1',index);
-      console.log('id 1',id);
+      console.log('index 1',index);
+      console.log('id 1', id);
       if (index > -1) {
         const item = newData[index];
         console.log('item 1', item);
@@ -210,6 +219,7 @@ class EditableTable extends React.Component {
         })
         console.log('item 2', item);;
         this.setState({ products: newData, editingKey: '' });
+        console.log('thisstate', this.state.products)
         // console.log('this setstate', this.setState({ products: newData, editingKey: '' })); undefined
       } else {
         newData.push(this.state.products);
@@ -225,7 +235,6 @@ class EditableTable extends React.Component {
   };
 
   render() {
-
     const components = {
       body: {
         row: EditableFormRow,

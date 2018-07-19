@@ -32,13 +32,22 @@ exports.getContactByID = router.get("/api/contacts/:id", (req, res) => {
 
 exports.postContact = router.post("/api/contacts/new", (req, res) => {
   var postData = req.body;
-  mySQL.query(
-    "INSERT INTO contacts SET ?",
-    postData,
+  mySQL.query("INSERT INTO contacts SET ?", postData,
     (err, results, fields) => {
-      if (err) console.log(err);
+      if (err)
+      res.status(400).json({
+        value: '0',
+        status: 'gagal',
+        message: 'Ada error'
+      })
+      // console.log(err);
       // console.log(results.insertId);
-      res.end(JSON.stringify(results));
+      // res.end(JSON.stringify(results));
+      res.status(201).json({
+        value: '1',
+        status: 'success',
+        message: 'Kontak berhasill ditambah'
+      })
     }
   );
 });
