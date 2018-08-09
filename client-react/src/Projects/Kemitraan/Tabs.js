@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { Tabs } from 'antd';
 import FormUser from './FormUser';
 import FormProduct from './FormProduct';
-import EmployeeList from './EmployeeList';
-import Inventory from './Inventory';
+// import EmployeeList from './EmployeeList';
+import EmployeeList from './TableListEmployee';
+// import Inventory from './Inventory';
+import Inventory from './TableListInventory';
 import ProductHistory from './ProductHistory-v2';
 import EditableTable from './List-Product';
 // import Button from './components/button'

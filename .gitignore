@@ -17,6 +17,12 @@ client-react/build/
 client-react-parcel/
 server-rest-node-express/node_modules/
 server-rest-node-express/tmp/
+next-kemitraan/node_modules/
+next-kemitraan/.next
+next-kemitraan/out
+learnnextjs-demo
+demo-kemitraan
+graphcms-examples
 
 # testing
 client-react/coverage

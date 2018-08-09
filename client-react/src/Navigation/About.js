@@ -1,7 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 
 const About = () => (
-  <h1>About Me</h1>
+  <div>
+    <h1>About Me</h1>
+    <Link to="/"> Go Home </Link>
+  </div>
 )
 
 export default About;

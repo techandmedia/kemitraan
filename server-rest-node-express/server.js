@@ -1,3 +1,4 @@
+const compression = require("compression");
 const express = require("express");
 const server = express();
 const bodyParser = require("body-parser");
@@ -6,6 +7,7 @@ const contactRoute = require("./routes/route-contact");
 const employeeRoute = require("./routes/route-employee");
 const productRoute = require("./routes/route-product");
 
+server.use(compression());
 server.use(express.static("public"));
 // app.use(express.static(path.join(__dirname, 'public')));
 server.use(cors());

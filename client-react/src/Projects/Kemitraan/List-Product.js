@@ -60,9 +60,6 @@ class EditableTable extends React.Component {
   constructor(props) {
     super(props);
     this.state = { products: [], editingKey: '' };
-    console.log('props', props)
-    console.log('stateprops', this.state.props)
-    console.log('stateproducst', this.state.products)
     this.columns = [
       {
         title: 'Product Name',
@@ -104,11 +101,10 @@ class EditableTable extends React.Component {
             <div>
               {editable ? (
                 <span>
-                  <EditableContext.Consumer onSubmit={this.handleSubmit}>
+                  <EditableContext.Consumer>
                     {form => (
                       <a
                         href="javascript:;"
-                        // onClick={() => this.save(form, record.key)} keyTOid
                         onClick={() => this.save(form, record.id)}
                         style={{ marginRight: 8 }}
                       >
@@ -118,14 +114,12 @@ class EditableTable extends React.Component {
                   </EditableContext.Consumer>
                   <Popconfirm
                     title="Sure to cancel?"
-                    // onConfirm={() => this.cancel(record.key)} keyTOid
                     onConfirm={() => this.cancel(record.id)}
                   >
                     <a>Cancel</a>
                   </Popconfirm>
                 </span>
               ) : (
-                  // <a onClick={() => this.edit(record.key)}>Edit</a> keyTOid
                   <a onClick={() => this.edit(record.id)}>Edit</a>
                 )}
             </div>
@@ -135,7 +129,11 @@ class EditableTable extends React.Component {
     ];
   }
 
+  handleCategoryChange = event => { 
+    this.setState({ category: event.target.value })}
+  
   handleProductNameChange = event => { this.setState({ productname: event.target.value }) }
+  handleOsNameChange = event => { this.setState({ os: event.target.value }) }
   handleModelchange = event => { this.setState({ model: event.target.value }) }
   handleSerialnumberChange = event => { this.setState({ serialnumber: event.target.value }) }
   handlePriceChange = event => { this.setState({ price: event.target.value }) }
@@ -146,7 +144,9 @@ class EditableTable extends React.Component {
   handleSubmit = event => {
     event.preventDefault();
     // axios.post('https://app.subarnanto.com/api/product/new',
-    axios.put('/api/product/update/:id',
+    // axios.put('/api/product/update/:id',
+    console.log('recordid', this.state.products.id);
+    axios.put(`/api/product/update/:id`,
       {
         category: this.state.category,
         productname: this.state.productname,
@@ -158,18 +158,6 @@ class EditableTable extends React.Component {
         detail: this.state.detail,
         image: this.state.image
       })
-    // .then(
-    //   // const success => {
-    //   function success() {
-    //     const modal = Modal.success({
-    //       title: 'Success',
-    //       content: 'Data successfully add',
-    //     });
-    //     setTimeout(() => modal.destroy(), 2000);
-    //   }
-    //   // console.log(res);
-    //   // console.log(res.data);
-    // )
   }
 
   componentDidMount() {
@@ -183,49 +171,49 @@ class EditableTable extends React.Component {
   }
 
   isEditing = (record) => {
-    // console.log('record', record);
-    // console.log('recordID', record.id);
-    // console.log('stateEditKey', this.state.editingKey);
-    // return record.key === this.state.editingKey;
     return record.id === this.state.editingKey;
   };
 
-  // edit(key) {
   edit(id) {
-    // this.setState({ editingKey: key });
     this.setState({ editingKey: id });
   }
 
-  // save(form, key) {
   save(form, id) {
-    console.log('form', form);
-    console.log('id', id)
     form.validateFields((error, row) => {
       if (error) {
         return;
       }
-      const newData = [...this.state.products]; //array of object
-      console.log('newdata 1', newData);
-      // const index = newData.findIndex(item => key === item.key);
-      const index = newData.findIndex(item => id === item.id); // get item ID
-      console.log('index 1',index);
-      console.log('id 1', id);
+      const newData = [...this.state.products];
+      const index = newData.findIndex(item => id === item.id); 
       if (index > -1) {
         const item = newData[index];
-        console.log('item 1', item);
-        newData.splice(index, 1, {
-          ...item,
-          ...row,
-        })
-        console.log('item 2', item);;
+        newData.splice(index, 1, { ...item, ...row, });      
         this.setState({ products: newData, editingKey: '' });
-        console.log('thisstate', this.state.products)
-        // console.log('this setstate', this.setState({ products: newData, editingKey: '' })); undefined
+        // console.log('newData', newData[index]) // data I want to update to API
+        // console.log('index', index) // index adalah index array
+        // console.log('id', id) // id adalah nomor index dalam tabel database, jangan sampai tertukar
+        // console.log('category', newData[index].category)
+        // console.log('productname', newData[index].productname)
+        // console.log('os', newData[index].os)
+        // console.log('serialnumber', newData[index].serialnumber)
+        // console.log('model', newData[index].model)
+        // console.log('detail', newData[index].detail)
+        axios.put(`/api/product/update/${id}`,
+          {
+            category: newData[index].category,
+            productname: newData[index].productname,
+            os: newData[index].os,
+            serialnumber: newData[index].serialnumber,
+            model: newData[index].model,
+            price: newData[index].price,
+            equipment_condition: newData[index].equipment_condition,
+            detail: newData[index].detail,
+            image: newData[index].image
+          })
+
       } else {
         newData.push(this.state.products);
-        console.log('newData push', newData);
         this.setState({ products: newData, editingKey: '' });
-        console.log('state2', this.setState({ products: newData, editingKey: '' }));
       }
     });
   }
@@ -250,8 +238,7 @@ class EditableTable extends React.Component {
         ...col,
         onCell: record => ({
           record,
-          // inputType: col.dataIndex === 'age' ? 'number' : 'text', cek type input apakah number atau teks
-          inputType: col.dataIndex === 'serialnumber' ? 'number' : 'text', // 
+          inputType: col.dataIndex === 'serialnumber' ? 'number' : 'text',
           dataIndex: col.dataIndex,
           title: col.title,
           editing: this.isEditing(record),

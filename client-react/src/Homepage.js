@@ -1,59 +1,48 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import styled from 'styled-components';
-import Home from './Navigation/Home';
-import About from './Navigation/About';
-import Projects from './Projects/Projects';
+import Header from './Navigation/Header';
+// import Home from './Navigation/Home';
+// import About from './Navigation/About';
+// import Projects from './Projects/Projects';
 
 const Homepage = () => (
-  <Router>
-    <div>
-      <Ul>
-        <Li><Link to="/">Home</Link></Li>
-        <Li><Link to="/about">About</Link></Li>
-        <Li><Link to="/topics">Topics</Link></Li>
-        <Li><Link to="/projects">Projects</Link></Li>
-      </Ul>
-
-      <hr />
-
-      {/* Add switch so it can have both dynamic and static route,
-      check out Tyler McGinnis article */}
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/about" component={About} />
-        <Route path="/topics" component={Topics} />
-        <Route path="/projects" component={Projects} />
-      </Switch>
-    </div>
-  </Router>
-);
-
-const Topics = ({ match }) => (
   <div>
-    <h2>Topics</h2>
-    <ul>
-      <li>
-        <Link to={`${match.url}/rendering`}>Rendering with React</Link>
-      </li>
-      <li>
-        <Link to={`${match.url}/components`}>Components</Link>
-      </li>
-      <li>
-        <Link to={`${match.url}/props-v-state`}>Props v. State</Link>
-      </li>
-    </ul>
-
-    <Switch>
-      <Route path={`${match.url}/:topicId`} component={Topic} />
-      <Route
-        exact
-        path={match.url}
-        render={() => <h3>Please select a topic.</h3>}
-      />
-    </Switch>
+    {/* yang ada di dalam sini sudah pasti dirender */}
+    <Header />
+    {/* <Sidebar /> */}
+    {/* <Content /> */}
+    {/* <Footer /> */}
   </div>
 );
+
+// const TestHome = () => <Home />;
+
+// const Topics = ({ match }) => (
+//   <div>
+//     <h2>Topics</h2>
+//     <ul>
+//       <li>
+//         <Link to={`${match.url}/rendering`}>Rendering with React</Link>
+//       </li>
+//       <li>
+//         <Link to={`${match.url}/components`}>Components</Link>
+//       </li>
+//       <li>
+//         <Link to={`${match.url}/props-v-state`}>Props v. State</Link>
+//       </li>
+//     </ul>
+
+//     <Switch>
+//       <Route path={`${match.url}/:topicId`} component={Topic} />
+//       <Route
+//         exact
+//         path={match.url}
+//         render={() => <h3>Please select a topic.</h3>}
+//       />
+//     </Switch>
+//   </div>
+// );
 
 const Topic = ({ match }) => (
   <div>

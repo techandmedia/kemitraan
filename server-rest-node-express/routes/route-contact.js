@@ -30,6 +30,19 @@ exports.getContactByID = router.get("/api/contacts/:id", (req, res) => {
   );
 });
 
+exports.putContact = router.put("/api/contacts/update/:id", (req, res) => {
+  const putData = req.body;
+  const idToPutData = req.params.id;
+  mySQL.query("UPDATE `contacts` SET `userid=?`, `fullname`=?, `usergroup=?`, `emailid`=?, `mobile`=?, `title`=?, `pp=?`, WHERE id=?", 
+  [putData.userid, putData.fullname, putData.usergroup, putData.emailid, putData.mobile, putData.title, putData.pp, idToPutData],
+    (err, results, fields) => {
+      if (err) console.log(err);
+      // console.log(results.insertId);
+      res.end(JSON.stringify(results));
+    }
+  );
+});
+
 exports.postContact = router.post("/api/contacts/new", (req, res) => {
   var postData = req.body;
   mySQL.query("INSERT INTO contacts SET ?", postData,
