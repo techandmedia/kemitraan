@@ -5,7 +5,7 @@ body {
   z-index: -1;
 }
 
-.tes {
+.phone {
   z-index: 1;
   display: flex;
   width: 30%;
@@ -45,23 +45,6 @@ body {
   top: 40%;
   right: 66%;
   z-index: 10;
-}
-
-ul {
-  position: absolute;
-  z-index: 10;
-  top: 2%;
-  right: 5%;
-  color: white;
-  list-style: none;
-  display: flex;
-  /* justify-content: flex-end; */
-  /* justify-content: space-around; */
-  font-size: 16px;
-}
-
-ul li {
-  margin-left: 50px;
 }
 
 .garisTitik {

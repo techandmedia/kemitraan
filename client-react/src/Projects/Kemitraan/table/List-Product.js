@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+import Header from '../components/header';
+import Title from '../components/title';
 import { Table, Input, InputNumber, Popconfirm, Form } from 'antd';
 
 const FormItem = Form.Item;
@@ -65,6 +67,7 @@ class EditableTable extends React.Component {
         title: 'Product Name',
         dataIndex: 'productname',
         width: '25%',
+        // fixed: 'left',
         editable: true,
       },
       {
@@ -129,9 +132,10 @@ class EditableTable extends React.Component {
     ];
   }
 
-  handleCategoryChange = event => { 
-    this.setState({ category: event.target.value })}
-  
+  handleCategoryChange = event => {
+    this.setState({ category: event.target.value })
+  }
+
   handleProductNameChange = event => { this.setState({ productname: event.target.value }) }
   handleOsNameChange = event => { this.setState({ os: event.target.value }) }
   handleModelchange = event => { this.setState({ model: event.target.value }) }
@@ -184,10 +188,10 @@ class EditableTable extends React.Component {
         return;
       }
       const newData = [...this.state.products];
-      const index = newData.findIndex(item => id === item.id); 
+      const index = newData.findIndex(item => id === item.id);
       if (index > -1) {
         const item = newData[index];
-        newData.splice(index, 1, { ...item, ...row, });      
+        newData.splice(index, 1, { ...item, ...row, });
         this.setState({ products: newData, editingKey: '' });
         // console.log('newData', newData[index]) // data I want to update to API
         // console.log('index', index) // index adalah index array
@@ -247,14 +251,21 @@ class EditableTable extends React.Component {
     });
 
     return (
-      <Table
-        rowKey={this.state.id}
-        components={components}
-        bordered
-        dataSource={this.state.products}
-        columns={columns}
-        rowClassName="editable-row"
-      />
+      <div>
+        <Header />
+        <Title />
+        <h1 style={{ fontFamily: 'Quicksand', fontSize: '30px' }}>Edit Data Produk</h1>
+        <div>
+          <Table style={{ background: 'white' }}
+            rowKey={this.state.id}
+            components={components}
+            bordered
+            dataSource={this.state.products}
+            columns={columns}
+            rowClassName="editable-row"
+            scroll={{ x: 1300 }} />
+        </div>
+      </div>
     );
   }
 }

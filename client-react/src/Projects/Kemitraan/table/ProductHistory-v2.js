@@ -1,10 +1,9 @@
 import React from 'react';
 import axios from 'axios';
-// import { Table, Input, InputNumber, Popconfirm, Form } from 'antd';
 import { Table } from 'antd';
-// import './product.css';
 import { Button } from 'antd/lib/radio';
-
+import Header from '../components/header';
+import Title from '../components/title';
 
 export default class ProductHistory extends React.Component {
   constructor(props) {
@@ -13,7 +12,6 @@ export default class ProductHistory extends React.Component {
       users: [],
       filteredInfo: null,
       sortedInfo: null
-
     };
   }
 
@@ -155,12 +153,23 @@ export default class ProductHistory extends React.Component {
 
     return (
       <div>
+        <Header />
+        <Title />
+        <h1 style={{ fontFamily: 'Quicksand', fontSize: '30px' }}>History Inventory</h1>
         <div className="table-operations">
           {/* <Button onClick={this.setGroupSort}>Sort Group</Button> */}
           <Button onClick={this.clearFilters}>Reset Filters</Button>
           {/* <Button onClick={this.clearAll}>Clear filters and sorters</Button> */}
         </div>
-        <Table columns={columns} rowKey={this.state.id} dataSource={this.state.users} onChange={this.handleChange} />
+        <div >
+        <Table style={{ background: 'white' }}
+        columns={columns} 
+        rowKey={this.state.id} 
+        dataSource={this.state.users} 
+        onChange={this.handleChange} 
+        scroll={{ x: 1300 }} />
+        </div>
+
       </div>
     )
   }

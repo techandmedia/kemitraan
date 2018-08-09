@@ -1,14 +1,14 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
 import Header from './components/header';
 
-const MyLayout = () => (
+const About = () => (
   <div style={layout}>
     <Header />
+    <p>About About About</p>
   </div>
-);
+)
 
-export default MyLayout;
+export default About;
 
 const layout = {
   display: 'flex',

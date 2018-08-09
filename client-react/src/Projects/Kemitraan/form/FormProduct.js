@@ -1,9 +1,10 @@
 import React from 'react';
 import axios from 'axios';
 import { Button, Cascader, Form, Input, Modal } from 'antd';
+import Header from '../components/header';
+import Title from '../components/title';
 
 const FormProduct = Form.Item;
-// const Option = Select.Option;
 
 const computerType = [{
   value: 'Computer',
@@ -120,46 +121,53 @@ export default class FormInventory extends React.Component {
 
   render() {
     return (
-      <Form onSubmit={this.handleSubmit}>
-        <FormProduct style={formStyle} {...formProductLayout} label="Computer Category">
-          <Cascader options={computerType} category={this.state.category} onChange={this.handleCategoryChange} />
-        </FormProduct>
-        <FormProduct style={formStyle} {...formProductLayout} label="Operating System">
-          {/* <Cascader options={os} /> */}
-          <Cascader options={os} os={this.state.os} onChange={this.handleOsChange} />
-        </FormProduct>
-        <FormProduct style={formStyle}  {...formProductLayout} label="Product Name">
-          <Input type="text" productname={this.state.productname} onChange={this.handleProductNameChange} />
-        </FormProduct>
-        <FormProduct style={formStyle} {...formProductLayout} label="Serial Number">
-          <Input type="text" serialnumber={this.state.serialnumber} onChange={this.handleSerialnumberChange} />
-        </FormProduct>
-        <FormProduct style={formStyle} {...formProductLayout} label="Model">
-          <Input type="text" model={this.state.model} onChange={this.handleModelchange} />
-        </FormProduct>
-        <FormProduct style={formStyle} {...formProductLayout} label="Item Price">
-          <Input type="text" price={this.state.price} onChange={this.handlePriceChange} />
-        </FormProduct>
-        <FormProduct style={formStyle} {...formProductLayout} label="Item Condition">
-          <Input type="text" equipment_condition={this.state.equipment_condition} onChange={this.handleEquipmentChange} />
-        </FormProduct>
-        <FormProduct {...formProductLayout} label="Detail">
-          <Input type="text" detail={this.state.detail} onChange={this.handleDetailChange} />
-        </FormProduct>
-        {/* <FormProduct {...formProductLayout} label="Image">
+      <div>
+        <Header />
+        <Title />
+        <h1 style={{ fontFamily: 'Quicksand', fontSize: '30px' }}>Form Produk</h1>
+        <div>
+          <Form onSubmit={this.handleSubmit}>
+            <FormProduct style={formStyle} {...formProductLayout} label="Computer Category">
+              <Cascader options={computerType} category={this.state.category} onChange={this.handleCategoryChange} />
+            </FormProduct>
+            <FormProduct style={formStyle} {...formProductLayout} label="Operating System">
+              {/* <Cascader options={os} /> */}
+              <Cascader options={os} os={this.state.os} onChange={this.handleOsChange} />
+            </FormProduct>
+            <FormProduct style={formStyle}  {...formProductLayout} label="Product Name">
+              <Input type="text" productname={this.state.productname} onChange={this.handleProductNameChange} />
+            </FormProduct>
+            <FormProduct style={formStyle} {...formProductLayout} label="Serial Number">
+              <Input type="text" serialnumber={this.state.serialnumber} onChange={this.handleSerialnumberChange} />
+            </FormProduct>
+            <FormProduct style={formStyle} {...formProductLayout} label="Model">
+              <Input type="text" model={this.state.model} onChange={this.handleModelchange} />
+            </FormProduct>
+            <FormProduct style={formStyle} {...formProductLayout} label="Item Price">
+              <Input type="text" price={this.state.price} onChange={this.handlePriceChange} />
+            </FormProduct>
+            <FormProduct style={formStyle} {...formProductLayout} label="Item Condition">
+              <Input type="text" equipment_condition={this.state.equipment_condition} onChange={this.handleEquipmentChange} />
+            </FormProduct>
+            <FormProduct {...formProductLayout} label="Detail">
+              <Input type="text" detail={this.state.detail} onChange={this.handleDetailChange} />
+            </FormProduct>
+            {/* <FormProduct {...formProductLayout} label="Image">
           <Input type="text" productname="this.state.detail" onChange={this.handleDetailChange} />
         </FormProduct> */}
-        <FormProduct style={formStyle} {...buttonLayout}>
-          <Button type="primary" htmlType="submit">
-            Add Item
+            <FormProduct style={formStyle} {...buttonLayout}>
+              <Button type="primary" htmlType="submit">
+                Add Item
           </Button>
-          {/* <Button style={{ marginLeft: 20 }} type="primary" onClick={this.handleReset}> */}
-          <Button style={{ marginLeft: 20 }} type="primary">
-            Clear (not yet working!)
+              {/* <Button style={{ marginLeft: 20 }} type="primary" onClick={this.handleReset}> */}
+              <Button style={{ marginLeft: 20 }} type="primary">
+                Clear (not yet working!)
           </Button>
-        </FormProduct>
+            </FormProduct>
+          </Form>
+        </div>
+      </div>
 
-      </Form>
     )
   }
 }

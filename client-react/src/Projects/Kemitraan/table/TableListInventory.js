@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import { Table } from 'antd';
+import Header from '../components/header';
+import Title from '../components/title';
 
 export default class Inventory extends React.Component {
   constructor(props) {
@@ -11,9 +13,9 @@ export default class Inventory extends React.Component {
   }
 
   componentDidMount() {
-      axios.get('/api/product/orderedbydate').then(res => {
-        this.setState({ Inventory: res.data });
-        console.log({ Inventory: res.data });
+    axios.get('/api/product/orderedbydate').then(res => {
+      this.setState({ Inventory: res.data });
+      console.log({ Inventory: res.data });
     });
   }
 
@@ -43,7 +45,12 @@ export default class Inventory extends React.Component {
 
     return (
       <div>
-        <Table bordered columns={columns} rowKey={this.state.id} dataSource={this.state.Inventory}/>
+        <Header />
+        <Title />
+        <h1 style={{ fontFamily: 'Quicksand', fontSize: '30px' }}>Data Inventory</h1>
+        <div style={{ background: 'white' }}>
+          <Table bordered columns={columns} rowKey={this.state.id} dataSource={this.state.Inventory} />
+        </div>
       </div>
     )
   }
